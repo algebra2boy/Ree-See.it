@@ -22,6 +22,8 @@ struct ReceiptTextFormOptionView: View {
     @State private var longitude: Double = 0.0
     @State private var isMapShown: Bool = false
     
+    @State private var isModalShown: Bool = false
+    
     @FocusState private var focusedField: FocusedField?
     
     
@@ -35,111 +37,131 @@ struct ReceiptTextFormOptionView: View {
     var body: some View {
         NavigationStack {
             
-            VStack {
-                Form {
-                    
-                    // MARK: Name
-                    Section {
-                        HStack {
-                            Text("Name")
-                            Spacer()
-                            TextField("Name", text: $name)
-                                .multilineTextAlignment(.trailing)
-                                .focused($focusedField, equals: .name)
-                                .submitLabel(.done)
+            ZStack {
+                
+                VStack {
+                    Form {
+                        
+                        // MARK: Name
+                        Section {
+                            HStack {
+                                Text("Name")
+                                Spacer()
+                                TextField("Name", text: $name)
+                                    .multilineTextAlignment(.trailing)
+                                    .focused($focusedField, equals: .name)
+                                    .submitLabel(.done)
+                            }
+                            
                         }
                         
-                    }
-                    
-                    // MARK: DatePicker
-                    LabeledContent {
-                        DatePicker("",
-                                   selection: $date,
-                                   displayedComponents: [.date])
-                        .datePickerStyle(.compact)
-                    } label: {
-                        FormItemLogoView(imageName: "calendar", rowLabel: "Date", rowTintColor: .green)
-                    }
-                    
-                    
-                    Section {
-                        // MARK: Category
+                        // MARK: DatePicker
                         LabeledContent {
-                            Picker("", selection: $category) {
-                                ForEach(categorySelection, id: \.self) {
-                                    Text($0)
+                            DatePicker("",
+                                       selection: $date,
+                                       displayedComponents: [.date])
+                            .datePickerStyle(.compact)
+                        } label: {
+                            FormItemLogoView(imageName: "calendar", rowLabel: "Date", rowTintColor: .green)
+                        }
+                        
+                        
+                        Section {
+                            // MARK: Category
+                            LabeledContent {
+                                Picker("", selection: $category) {
+                                    ForEach(categorySelection, id: \.self) {
+                                        Text($0)
+                                    }
                                 }
+                                .pickerStyle(.menu)
+                                
+                            } label: {
+                                FormItemLogoView(imageName: "tag", rowLabel: "Category", rowTintColor: .red)
                             }
-                            .pickerStyle(.menu)
                             
-                        } label: {
-                            FormItemLogoView(imageName: "tag", rowLabel: "Category", rowTintColor: .red)
+                            // MARK: Note
+                            LabeledContent {
+                                NavigationLink {
+                                    ReceiptMessageView(note: $note)
+                                } label: {
+                                    Text("")
+                                }
+                                .navigationBarBackButtonHidden(true)
+                            } label: {
+                                FormItemLogoView(imageName: "message", rowLabel: "Note", rowTintColor: .orange)
+                            }
+                            
                         }
                         
-                        // MARK: Note
-                        LabeledContent {
-                            NavigationLink {
-                                ReceiptMessageView(note: $note)
-                            } label: {
+                        
+                        // MARK: Address
+                        Section {
+                            LabeledContent {
+                                
                                 Text("")
-                            }
-                            .navigationBarBackButtonHidden(true)
-                        } label: {
-                            FormItemLogoView(imageName: "message", rowLabel: "Note", rowTintColor: .orange)
-                        }
-                        
-                    }
-                    
-                    
-                    // MARK: Address
-                    Section {
-                        LabeledContent {
-                            
-                            Text("")
-                            
-                        } label: {
-                            NavigationLink {
-                                MapView(isMapShown: $isMapShown,
-                                        address: $address,
-                                        latitude: $latitude,
-                                        longitude: $longitude)
+                                
                             } label: {
-                                FormItemLogoView(imageName: "paperplane.fill", rowLabel: "Address", rowTintColor: .blue)
+                                NavigationLink {
+                                    MapView(isMapShown: $isMapShown,
+                                            address: $address,
+                                            latitude: $latitude,
+                                            longitude: $longitude)
+                                } label: {
+                                    FormItemLogoView(imageName: "paperplane.fill", rowLabel: "Address", rowTintColor: .blue)
+                                }
+                                
                             }
                             
+                            // MARK: Price
+                            LabeledContent {
+                                TextField("0.00", value: $price, format: .currency(code: "USD"))
+                                    .multilineTextAlignment(.trailing)
+                                    .keyboardType(.decimalPad)
+                                
+                                
+                            } label: {
+                                FormItemLogoView(imageName: "dollarsign.circle.fill", rowLabel: "Price", rowTintColor: .indigo)
+                            }
                         }
                         
-                        // MARK: Price
-                        LabeledContent {
-                            TextField("0.00", value: $price, format: .currency(code: "USD"))
-                                .multilineTextAlignment(.trailing)
-                                .keyboardType(.decimalPad)
+                        VStack {
                             
+                            Button(action: {
+                                // TODO: Send HTTP request
+                                isModalShown.toggle()
+                            }) {
+                                Spacer()
+                                Text("Submit")
+                                    .font(.system(size: 20, weight: .bold))
+                                Spacer()
+                                
+                            }
+                            .buttonStyle(.borderless)
+                            .disabled(isSubmitDisable)
                             
-                        } label: {
-                            FormItemLogoView(imageName: "dollarsign.circle.fill", rowLabel: "Price", rowTintColor: .indigo)
                         }
-                    }
-                    
-                    VStack {
                         
-                        Button(action: {
-                            // TODO: Send HTTP request
-                        }) {
-                            Spacer()
-                            Text("Submit")
-                                .font(.system(size: 20, weight: .bold))
-                            Spacer()
-                            
-                        }
-                        .buttonStyle(.borderless)
-                        .disabled(isSubmitDisable)
                         
                     }
                     
                     
                 }
+                .blur(radius: isModalShown ? 8 : 0)
                 
+                if isModalShown {
+                    
+                    Color.clear
+                    // because swipe action is another gesture
+                    // swiftui is confused on which gesture should perform first
+                    // give this view for hit testing
+                        .contentShape(Rectangle())  // make entire view tappable
+                        .onTapGesture {
+                            isModalShown.toggle()
+                        }
+                    
+                    ModalCompletionView(showSubmission: $isModalShown)
+                }
             }
             .navigationTitle("New receipt")
             .navigationBarTitleDisplayMode(.inline)
