@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ReceiptTextFormOptionView: View {
     
@@ -14,8 +15,12 @@ struct ReceiptTextFormOptionView: View {
     @State private var date: Date = Date()
     @State private var category: String = "Food"
     @State private var note: String = ""
-    @State private var address: String = ""
+    @State private var address: String = "650 N Pleasant St, Amherst, MA"
     @State private var price: Double = 0.0
+    
+    @State private var latitude: Double = 0.0
+    @State private var longitude: Double = 0.0
+    @State private var isMapShown: Bool = false
     
     
     var categorySelection = ["Food", "Grocery", "Education", "Gas", "Technology", "Clothes"]
@@ -23,92 +28,144 @@ struct ReceiptTextFormOptionView: View {
     
     var body: some View {
         NavigationStack {
-            Form {
-                
-                // MARK: Name
-                Section {
-                    HStack {
-                        Text("Name")
-                        Spacer()
-                        TextField("Name", text: $name)
-                            .multilineTextAlignment(.trailing)
-                    }
+            
+            VStack {
+                Form {
                     
-                }
-                
-                // MARK: DatePicker
-                LabeledContent {
-                    DatePicker("",
-                               selection: $date,
-                               displayedComponents: [.date])
-                    .datePickerStyle(.compact)
-                } label: {
-                    FormItemLogoView(imageName: "calendar", rowLabel: "Date", rowTintColor: .green)
-                }
-                
-                
-                Section {
-                    // MARK: Category
-                    LabeledContent {
-                        Picker("", selection: $category) {
-                            ForEach(categorySelection, id: \.self) {
-                                Text($0)
-                            }
+                    // MARK: Name
+                    Section {
+                        HStack {
+                            Text("Name")
+                            Spacer()
+                            TextField("Name", text: $name)
+                                .multilineTextAlignment(.trailing)
                         }
-                        .pickerStyle(.menu)
                         
-                    } label: {
-                        FormItemLogoView(imageName: "tag", rowLabel: "Category", rowTintColor: .red)
                     }
                     
-                    // MARK: Note
+                    // MARK: DatePicker
                     LabeledContent {
-                        TextField("Leave a note", text: $note)
-                            .multilineTextAlignment(.trailing)
+                        DatePicker("",
+                                   selection: $date,
+                                   displayedComponents: [.date])
+                        .datePickerStyle(.compact)
                     } label: {
-                        FormItemLogoView(imageName: "message", rowLabel: "Note", rowTintColor: .orange)
+                        FormItemLogoView(imageName: "calendar", rowLabel: "Date", rowTintColor: .green)
                     }
+                    
+                    
+                    Section {
+                        // MARK: Category
+                        LabeledContent {
+                            Picker("", selection: $category) {
+                                ForEach(categorySelection, id: \.self) {
+                                    Text($0)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                            
+                        } label: {
+                            FormItemLogoView(imageName: "tag", rowLabel: "Category", rowTintColor: .red)
+                        }
+                        
+                        // MARK: Note
+                        LabeledContent {
+                            TextField("Leave a note to your receipt", text: $note)
+                                .multilineTextAlignment(.trailing)
+                        } label: {
+                            FormItemLogoView(imageName: "message", rowLabel: "Note", rowTintColor: .orange)
+                        }
+                        
+                    }
+                    
+                    
+                    // MARK: Address
+                    Section {
+                        LabeledContent {
+                            TextField("650 N Pleasant St, Amherst, MA", text: $address, axis: .vertical)
+                                .lineLimit(2, reservesSpace: true)
+                                .multilineTextAlignment(.trailing)
+                            
+                        } label: {
+                            NavigationLink {
+                                MapView(address: $address, latitude: $latitude, longitude: $longitude)
+                            } label: {
+                                FormItemLogoView(imageName: "paperplane.fill", rowLabel: "Address", rowTintColor: .blue)
+                            }
+                            
+                        }
+                        
+                        // MARK: Price
+                        LabeledContent {
+                            TextField("0.00", value: $price, format: .currency(code: "USD"))
+                                .multilineTextAlignment(.trailing)
+                                .keyboardType(.decimalPad)
+                            
+                            
+                        } label: {
+                            FormItemLogoView(imageName: "dollarsign.circle.fill", rowLabel: "Price", rowTintColor: .indigo)
+                        }
+                    }
+                    
+                    VStack {
+                        
+                        Button(action: {
+                            convertAddressToCoordinates()
+                        }) {
+                            Spacer()
+                            Text("Submit")
+                                .font(.system(size: 20, weight: .bold))
+                            Spacer()
+                                
+                        }
+                        .buttonStyle(.borderless)
+                        
+                    }
+                    
                     
                 }
                 
-                
-                // MARK: Address
-                Section {
-                    LabeledContent {
-                        TextField("650 N Pleasant St, Amherst, MA", text: $address, axis: .vertical)
-                            .lineLimit(2, reservesSpace: true)
-                            .multilineTextAlignment(.trailing)
-                        
-                    } label: {
-                        FormItemLogoView(imageName: "paperplane.fill", rowLabel: "Address", rowTintColor: .blue)
-                    }
-                }
-                
-                
-                // MARK: Price
-                Section {
-                    LabeledContent {
-                        TextField("0.00", value: $price, format: .currency(code: "USD"))
-                            .multilineTextAlignment(.trailing)
-                            .keyboardType(.decimalPad)
-                        
-                        
-                    } label: {
-                        FormItemLogoView(imageName: "dollarsign.circle.fill", rowLabel: "Price", rowTintColor: .indigo)
-                    }
-                }
-                
-                
-                Button {
-                    
-                } label: {
-                    Text("Submit")
-                        
-                }
-                    
             }
             .navigationTitle("New receipt")
             .navigationBarTitleDisplayMode(.inline)
+            
+            
+            
+        }
+    }
+}
+
+struct MapView: View {
+    
+    @Binding var address: String
+    @Binding var latitude: Double
+    @Binding var longitude: Double
+    
+    var body: some View {
+        Map {
+            Marker(address, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+        }
+    }
+}
+
+extension ReceiptTextFormOptionView {
+    
+    
+    // convert address to coordinate
+    func convertAddressToCoordinates() {
+        let geocoder = CLGeocoder()
+        
+        geocoder.geocodeAddressString(address) { placemarks, error in
+            if let error = error {
+                print("Geocoding error: \(error.localizedDescription)")
+                return
+            }
+            
+            if let placemark = placemarks?.first {
+                self.latitude = placemark.location?.coordinate.latitude ?? 0.0
+                self.longitude = placemark.location?.coordinate.longitude ?? 0.0
+                isMapShown = true
+            }
             
         }
     }
