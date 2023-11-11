@@ -3,6 +3,7 @@ import { MongoClient } from 'mongodb';
 import client from '../modules/db_connect.js';
 
 const router = express.Router()
+// await client.connect()
 
 router.post('/api/receipt/:user_id', (req, res) => {
   // const receipt = {}
