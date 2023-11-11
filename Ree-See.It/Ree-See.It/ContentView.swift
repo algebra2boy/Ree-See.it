@@ -12,9 +12,10 @@ struct ContentView: View {
     @State var selectedTab: MenuTab = .receipt
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            MenuTabView()
-        }
+//        TabView(selection: $selectedTab) {
+//            MenuTabView()
+//        }
+        ReceiptTextFormOptionView()
     }
 }
 
