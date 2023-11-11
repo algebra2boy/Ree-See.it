@@ -54,34 +54,5 @@ router.get('/api/receipt/:user_id', async (req, res) => {
   res.send(doc)
 })
 
-// function createFormData(formData) {
-//   const boundary = '----WebKitFormBoundary' + new Date().getTime();
-//   const boundaryString = '\r\n--' + boundary + '\r\n';
-//   const endBoundaryString = '\r\n--' + boundary + '--';
-
-//   let body = '';
-
-//   for (const key in formData) {
-//     if (formData.hasOwnProperty(key)) {
-//       body += boundaryString;
-//       if (formData[key].options.filename) {
-//         body += 'Content-Disposition: form-data; name="' + key +
-//                 '"; filename="' + formData[key].options.filename + '"\r\n';
-//       } else {
-//         body += 'Content-Disposition: form-data; name="' + key + '"\r\n';
-//       }
-
-//       if (formData[key].options.contentType) {
-//         body += 'Content-Type: ' + formData[key].options.contentType + '\r\n';
-//       }
-
-//       body += '\r\n' + formData[key].value.toString('binary') + '\r\n';
-//     }
-//   }
-
-//   body += endBoundaryString;
-
-//   return body;
-// }
 
 export default router
