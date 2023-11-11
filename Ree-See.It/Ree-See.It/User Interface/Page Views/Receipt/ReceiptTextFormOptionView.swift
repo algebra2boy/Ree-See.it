@@ -15,12 +15,14 @@ struct ReceiptTextFormOptionView: View {
     @State private var date: Date = Date()
     @State private var category: String = "Food"
     @State private var note: String = ""
-    @State private var address: String = "650 N Pleasant St, Amherst, MA"
+    @State private var address: String = ""
     @State private var price: Double = 0.0
     
     @State private var latitude: Double = 0.0
     @State private var longitude: Double = 0.0
     @State private var isMapShown: Bool = false
+    
+    @FocusState private var focusedField: FocusedField?
     
     
     var categorySelection = ["Food", "Grocery", "Education", "Gas", "Technology", "Clothes"]
@@ -39,6 +41,8 @@ struct ReceiptTextFormOptionView: View {
                             Spacer()
                             TextField("Name", text: $name)
                                 .multilineTextAlignment(.trailing)
+                                .focused($focusedField, equals: .name)
+                                .submitLabel(.done)
                         }
                         
                     }
@@ -70,8 +74,12 @@ struct ReceiptTextFormOptionView: View {
                         
                         // MARK: Note
                         LabeledContent {
-                            TextField("Leave a note to your receipt", text: $note)
-                                .multilineTextAlignment(.trailing)
+                            NavigationLink {
+                                ReceiptMessageView(note: $note)
+                            } label: {
+                                Text("")
+                            }
+                            .navigationBarBackButtonHidden(true)
                         } label: {
                             FormItemLogoView(imageName: "message", rowLabel: "Note", rowTintColor: .orange)
                         }
@@ -85,10 +93,17 @@ struct ReceiptTextFormOptionView: View {
                             TextField("650 N Pleasant St, Amherst, MA", text: $address, axis: .vertical)
                                 .lineLimit(2, reservesSpace: true)
                                 .multilineTextAlignment(.trailing)
+                                .focused($focusedField, equals: .address)
+                                .onSubmit {
+                                    self.convertAddressToCoordinates()
+                                }
                             
                         } label: {
                             NavigationLink {
-                                MapView(address: $address, latitude: $latitude, longitude: $longitude)
+                                MapView(isMapShown: $isMapShown,
+                                        address: $address,
+                                        latitude: $latitude,
+                                        longitude: $longitude)
                             } label: {
                                 FormItemLogoView(imageName: "paperplane.fill", rowLabel: "Address", rowTintColor: .blue)
                             }
@@ -110,15 +125,16 @@ struct ReceiptTextFormOptionView: View {
                     VStack {
                         
                         Button(action: {
-                            convertAddressToCoordinates()
+                            // TODO: Send HTTP request
                         }) {
                             Spacer()
                             Text("Submit")
                                 .font(.system(size: 20, weight: .bold))
                             Spacer()
-                                
+                            
                         }
                         .buttonStyle(.borderless)
+                        .disabled(isMapShown == false)
                         
                     }
                     
@@ -135,15 +151,38 @@ struct ReceiptTextFormOptionView: View {
     }
 }
 
+struct ReceiptMessageView: View {
+    
+    @Binding var note: String
+    var body: some View {
+        
+        NavigationStack {
+            TextEditor(text: $note)
+                .foregroundStyle(.secondary)
+                .navigationTitle("Leave a note to you receipt")
+                .submitLabel(.done)
+        }
+    }
+}
+
 struct MapView: View {
     
+    @Binding var isMapShown: Bool
     @Binding var address: String
     @Binding var latitude: Double
     @Binding var longitude: Double
     
     var body: some View {
-        Map {
-            Marker(address, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+        
+        if isMapShown {
+            Map {
+                Marker(address, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+            }
+        } else {
+            Text("Sorry, the address you provided is not avilable and please retry")
+                .font(.system(size: 20, weight: .heavy))
+                .multilineTextAlignment(.center)
+                .frame(width: 200)
         }
     }
 }
@@ -156,10 +195,7 @@ extension ReceiptTextFormOptionView {
         let geocoder = CLGeocoder()
         
         geocoder.geocodeAddressString(address) { placemarks, error in
-            if let error = error {
-                print("Geocoding error: \(error.localizedDescription)")
-                return
-            }
+            guard error != nil else { return }
             
             if let placemark = placemarks?.first {
                 self.latitude = placemark.location?.coordinate.latitude ?? 0.0
@@ -168,6 +204,12 @@ extension ReceiptTextFormOptionView {
             }
             
         }
+    }
+}
+
+extension ReceiptTextFormOptionView {
+    enum FocusedField {
+        case name, address
     }
 }
 
