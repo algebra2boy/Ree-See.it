@@ -16,7 +16,7 @@ const upload = multer({ storage: storage });
 
 const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex');
 
-app.get("api/posts/:imageName", async (req, res) =>
+app.get("/api/posts/:imageName", async (req, res) =>
 {
     const imageName = req.params.imageName
     if (!imageName)
@@ -51,7 +51,8 @@ app.post("/api/posts", upload.single("image"), async (req, res) =>
     {
         res.send({
             "message": "successfully upload the image to AWS server",
-            "imageUrl": json["imageUrl"]
+            "imageUrl": json["imageUrl"],
+            "imageName": imageName
         });
     }
     else {
