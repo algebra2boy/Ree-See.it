@@ -27,6 +27,8 @@
 		AED9D5742AFF708800E27922 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D5732AFF708800E27922 /* MapView.swift */; };
 		AED9D5762AFF70AD00E27922 /* ReceiptMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D5752AFF70AD00E27922 /* ReceiptMessageView.swift */; };
 		AED9D5782AFFD17000E27922 /* ModalCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D5772AFFD17000E27922 /* ModalCompletionView.swift */; };
+		AED9D57B2AFFFF6100E27922 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D57A2AFFFF6100E27922 /* PhotoPickerView.swift */; };
+		AED9D57D2B0000A700E27922 /* PhotoNetworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D57C2B0000A700E27922 /* PhotoNetworkViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		AED9D5732AFF708800E27922 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		AED9D5752AFF70AD00E27922 /* ReceiptMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptMessageView.swift; sourceTree = "<group>"; };
 		AED9D5772AFFD17000E27922 /* ModalCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCompletionView.swift; sourceTree = "<group>"; };
+		AED9D57A2AFFFF6100E27922 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
+		AED9D57C2B0000A700E27922 /* PhotoNetworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoNetworkViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				AED9D5662AFF3A4D00E27922 /* ReceiptView.swift */,
+				AED9D5792AFFFF4500E27922 /* OCROption */,
 				AED9D5702AFF704E00E27922 /* TextOption */,
 				4211EF892AFF3E7600D1AD18 /* EmptyReceiptView.swift */,
 				425428732AFF424300117B18 /* ReceiptCardView.swift */,
@@ -177,6 +182,15 @@
 				AED9D5772AFFD17000E27922 /* ModalCompletionView.swift */,
 			);
 			path = TextOption;
+			sourceTree = "<group>";
+		};
+		AED9D5792AFFFF4500E27922 /* OCROption */ = {
+			isa = PBXGroup;
+			children = (
+				AED9D57A2AFFFF6100E27922 /* PhotoPickerView.swift */,
+				AED9D57C2B0000A700E27922 /* PhotoNetworkViewModel.swift */,
+			);
+			path = OCROption;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +285,8 @@
 				AED9D5672AFF3A4D00E27922 /* ReceiptView.swift in Sources */,
 				AED9D56C2AFF3D5600E27922 /* SelectionMenu.swift in Sources */,
 				AED9D5742AFF708800E27922 /* MapView.swift in Sources */,
+				AED9D57B2AFFFF6100E27922 /* PhotoPickerView.swift in Sources */,
+				AED9D57D2B0000A700E27922 /* PhotoNetworkViewModel.swift in Sources */,
 				AED9D56E2AFF3FE100E27922 /* ReceiptTextFormOptionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
