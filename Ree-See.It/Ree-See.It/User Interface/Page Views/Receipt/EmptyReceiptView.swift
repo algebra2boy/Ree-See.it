@@ -10,6 +10,7 @@ import SwiftUI
 struct EmptyReceiptView: View {
     var body: some View {
         VStack(spacing: 20) {
+            Spacer()
             Image(systemName: "doc.badge.plus")
                 .resizable()
                 .scaledToFit()
@@ -18,8 +19,12 @@ struct EmptyReceiptView: View {
                 .offset(x: -15)
                 .padding(.top, 50)
             
-            Text("Add your receipt")
-                .font(.system(.title2, weight: .semibold))
+            Text("Please press on \"+\" on the top right to add your receipt")
+                .font(.system(.title, weight: .light))
+                .multilineTextAlignment(.center)
+            
+            Spacer()
+            Spacer()
         
         }
     }

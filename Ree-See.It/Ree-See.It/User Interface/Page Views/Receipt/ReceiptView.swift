@@ -12,17 +12,26 @@ struct ReceiptView: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(receipts, id: \.id) { receipt in
-                    ReceiptCardView(receipt: receipt)
+            
+            Group {
+                if receipts.isEmpty {
+                    EmptyReceiptView()
+                } else {
+                    
+                    List {
+                        ForEach(receipts, id: \.id) { receipt in
+                            ReceiptCardView(receipt: receipt)
+                        }
+                        .onDelete(perform: deleteReceipt)
+                        .listRowBackground(
+                            RoundedRectangle(
+                                cornerSize: CGSize(width: 20, height: 10))
+                            .fill(Color(white: 1, opacity: 0.8))
+                            .padding(3)
+                        )
+                        .listRowSeparator(.hidden) // hide the line
+                    }
                 }
-                .onDelete(perform: deleteReceipt)
-                .listRowBackground(
-                    Capsule()
-                        .fill(Color(white: 1, opacity: 0.8))
-                        .padding(3)
-                )
-                .listRowSeparator(.hidden)
             }
             
             .navigationTitle("Receipts")

@@ -12,6 +12,7 @@
 		425428772AFF447C00117B18 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425428762AFF447C00117B18 /* NumberFormatter.swift */; };
 		425428792AFF459500117B18 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425428782AFF459500117B18 /* Receipt.swift */; };
 		4254287E2AFF49C700117B18 /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4254287D2AFF49C700117B18 /* Bundle+Decode.swift */; };
+		425428862AFF6BF300117B18 /* Auth0 in Frameworks */ = {isa = PBXBuildFile; productRef = 425428852AFF6BF300117B18 /* Auth0 */; };
 		AE29D46B2AFF35BF00D65589 /* Ree_See_ItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29D46A2AFF35BF00D65589 /* Ree_See_ItApp.swift */; };
 		AE29D46D2AFF35BF00D65589 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29D46C2AFF35BF00D65589 /* ContentView.swift */; };
 		AE29D46F2AFF35C100D65589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE29D46E2AFF35C100D65589 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				425428862AFF6BF300117B18 /* Auth0 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +158,9 @@
 			dependencies = (
 			);
 			name = "Ree-See.It";
+			packageProductDependencies = (
+				425428852AFF6BF300117B18 /* Auth0 */,
+			);
 			productName = "Ree-See.It";
 			productReference = AE29D4672AFF35BF00D65589 /* Ree-See.It.app */;
 			productType = "com.apple.product-type.application";
@@ -184,6 +189,9 @@
 				Base,
 			);
 			mainGroup = AE29D45E2AFF35BF00D65589;
+			packageReferences = (
+				425428842AFF6BF300117B18 /* XCRemoteSwiftPackageReference "Auth0" */,
+			);
 			productRefGroup = AE29D4682AFF35BF00D65589 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -425,6 +433,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		425428842AFF6BF300117B18 /* XCRemoteSwiftPackageReference "Auth0" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/Auth0.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		425428852AFF6BF300117B18 /* Auth0 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 425428842AFF6BF300117B18 /* XCRemoteSwiftPackageReference "Auth0" */;
+			productName = Auth0;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AE29D45F2AFF35BF00D65589 /* Project object */;
 }
