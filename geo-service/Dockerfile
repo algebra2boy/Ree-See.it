@@ -1,6 +1,7 @@
-FROM python:3-alphine3.17
+FROM python:3.9-slim-buster
 WORKDIR /app
-COPY ./app
+COPY . /app
+RUN python3 -m pip install --upgrade pip
 RUN pip install -r requirements.txt
-EXPOSE 5000
+EXPOSE 3000
 CMD python ./app.py
