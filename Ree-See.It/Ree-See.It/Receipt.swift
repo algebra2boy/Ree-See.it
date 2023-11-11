@@ -11,7 +11,7 @@ struct Receipt: Codable, Identifiable, Hashable {
     var id: UUID
     var name: String
     var address: String
-//    var coordinate:
+    var coordinate: Coordinate
     
     var date: String
     
@@ -20,16 +20,22 @@ struct Receipt: Codable, Identifiable, Hashable {
     var category: String
     var message: String
     
+    var imageLink: String?
+    
     // used for API verification
     var isVerified: Bool
     
     // API, TEXT, OCR
     var receiptMethod: String
     
-    init(id: UUID, name: String, address: String, date: String, item: [Item], totalPrice: Double, category: String, message: String, isVerified: Bool, receiptMethod: String) {
+    init(id: UUID, 
+         name: String,
+         address: String,
+         coordinate: Coordinate, date: String, item: [Item], totalPrice: Double, category: String, message: String, isVerified: Bool, receiptMethod: String) {
         self.id = id
         self.name = name
         self.address = address
+        self.coordinate = coordinate
         self.date = date
         self.item = item
         self.totalPrice = totalPrice
@@ -46,11 +52,21 @@ struct Item: Codable, Hashable {
     var price: Double
 }
 
+struct Coordinate: Codable, Hashable {
+    var lat: Double
+    var long: Double
+    
+    init(lat: Double, long: Double) {
+        self.lat = lat
+        self.long = long
+    }
+}
 
 extension Receipt {
     static let receipt1 = Receipt(id: UUID(),
                                   name: "Costco",
                                   address: "Boston",
+                                  coordinate: .init(lat: 42.3601, long: -71.057083),
                                   date: "2023-10-11",
                                   item: [],
                                   totalPrice: 129.99,
@@ -62,6 +78,7 @@ extension Receipt {
     static let receipt2 = Receipt(id: UUID(),
                                   name: "Walmart",
                                   address: "Cambridge",
+                                  coordinate: .init(lat: 42.3601, long: -71.057083),
                                   date: "2023-10-12",
                                   item: [],
                                   totalPrice: 88.76,
@@ -73,6 +90,7 @@ extension Receipt {
     static let receipt3 = Receipt(id: UUID(),
                                   name: "Target",
                                   address: "Somerville",
+                                  coordinate: .init(lat: 42.3601, long: -71.057083),
                                   date: "2023-10-13",
                                   item: [],
                                   totalPrice: 57.45,
@@ -84,6 +102,7 @@ extension Receipt {
     static let receipt4 = Receipt(id: UUID(),
                                   name: "Best Buy",
                                   address: "Quincy",
+                                  coordinate: .init(lat: 42.3601, long: -71.057083),
                                   date: "2023-10-14",
                                   item: [],
                                   totalPrice: 204.99,
@@ -95,6 +114,7 @@ extension Receipt {
     static let receipt5 = Receipt(id: UUID(),
                                   name: "Trader Joe's",
                                   address: "Arlington",
+                                  coordinate: .init(lat: 42.3601, long: -71.057083),
                                   date: "2023-10-15",
                                   item: [],
                                   totalPrice: 150.23,
