@@ -7,35 +7,52 @@
 import SwiftUI
 
 struct HeroView: View {
-    private let tracking: CGFloat = -4
-
+    let user: User?
+    let action: () -> Void
+    
     var body: some View {
-    #if os(iOS)
-        Image("Auth0")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 25, height: 28, alignment: .center)
-            .padding(.top, 8)
-        VStack(alignment: .leading, spacing: -32) {
-            Text("Swift")
-                .tracking(self.tracking)
-                .foregroundStyle(
-                    .linearGradient(
-                      colors: [Color("Orange"), Color("Pink")],
-                      startPoint: .topLeading,
-                      endPoint: .bottomTrailing
-                    ))
-            Text("Sample")
-                .tracking(self.tracking)
-            Text("App")
-                .tracking(self.tracking)
+        VStack {
+            Spacer()
+            VStack {
+                AsyncImage(url: URL(string: user?.picture ?? "https://docs-assets.developer.apple.com/published/ac1785229105c7feaff999aafe6303b3/AsyncImage-1~dark@2x.png")) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 100, height: 100)
+                .cornerRadius(60)
+                
+                Text(user?.name ?? "Test user")
+                    .font(.system(size: 25))
+                Text(user?.email ?? "hackathon@umass.edu")
+                    .font(.subheadline)
+            }
+            .padding(20)
+            
+            Spacer()
+                
+            VStack {
+                HStack {
+                    Button {
+                        action()
+                    } label: {
+                        Text("Sign Out")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+            }
+            .padding()
+            
+            Spacer()
+            
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .font(.custom("SpaceGrotesk-Medium", size: 80))
-    #else
-        Text("Ree-See.it")
-            .font(.title)
-    #endif
+        
     }
+    
 }
+
+//#Preview {
+//    HeroView()
+//}
 

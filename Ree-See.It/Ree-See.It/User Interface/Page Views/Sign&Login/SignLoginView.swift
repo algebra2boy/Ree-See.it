@@ -12,13 +12,13 @@ struct SignLoginView: View {
     @State var user: User?
 
     var body: some View {
+        // already login in
         if let user = self.user {
             VStack {
-                ProfileView(user: user)
-                Button("Logout", action: self.logout)
+                HeroView(user: user, action: self.logout)
+//                Button("Logout", action: self.logout)
             }
         } else {
-            HeroView()
             Button("Login", action: self.login)
         }
     }
