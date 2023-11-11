@@ -10,7 +10,7 @@ import Charts
 
 struct GraphView: View {
     
-    @State private var renderedImage = Image(systemName: "photo")
+    @State private var renderedImage = Image(systemName: "plus")
     
     @Environment(\.displayScale) var displayScale
     
@@ -23,10 +23,8 @@ struct GraphView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    ShareLink("Export",
-                              item: renderedImage,
-                              preview: SharePreview(Text("Shared image"),
-                                                    image: Image(systemName: "apple.logo")))
+                    ShareLink(item: renderedImage,
+                              preview: SharePreview("Track Report", image: renderedImage))
                 }
             }
             .onAppear {
@@ -39,7 +37,7 @@ struct GraphView: View {
     // render the image
     @MainActor func render() {
         
-        let image = Image("Ree-See.it_Logo").resizable().frame(width: 20)
+        let image = Image("R").resizable().scaledToFit().frame(width: 50)
         
         let renderer = ImageRenderer(content: image)
         
@@ -47,7 +45,8 @@ struct GraphView: View {
         renderer.scale = displayScale
         
         if let uiImage = renderer.uiImage {
-            renderedImage = Image(uiImage: uiImage)
+            print("it is working")
+            renderedImage = Image(uiImage: uiImage) 
         }
     }
 }
