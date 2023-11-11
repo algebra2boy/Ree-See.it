@@ -27,6 +27,10 @@ struct ReceiptTextFormOptionView: View {
     
     var categorySelection = ["Food", "Grocery", "Education", "Gas", "Technology", "Clothes"]
     
+    var isSubmitDisable: Bool {
+        name.isEmpty || address.isEmpty || price == 0.0
+    }
+    
     
     var body: some View {
         NavigationStack {
@@ -129,7 +133,7 @@ struct ReceiptTextFormOptionView: View {
                             
                         }
                         .buttonStyle(.borderless)
-                        .disabled(isMapShown == false)
+                        .disabled(isSubmitDisable)
                         
                     }
                     
