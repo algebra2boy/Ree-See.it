@@ -10,6 +10,9 @@ import Auth0
 
 struct ReceiptView: View {
     @State private var receipts: [Receipt] = [.receipt1, .receipt2, .receipt3, .receipt4, .receipt5]
+    
+    @EnvironmentObject var authManager: AuthenticationManager
+
 
     var body: some View {
         NavigationStack {            
@@ -40,9 +43,11 @@ struct ReceiptView: View {
                     NavigationLink {
                         SignLoginView()
                     } label: {
-                        Image(systemName: "person.circle")
-                            .font(.title)
-                            .foregroundStyle(.black)
+                        HStack {
+                            UserAsyncImage(imageUrl: authManager.user?.picture, width: 40, height: 40)
+                            
+                            Text("Hi, \(authManager.user?.name ?? "welcome to Ree See it")")
+                        }
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -70,4 +75,5 @@ struct ReceiptView: View {
 
 #Preview {
     ReceiptView()
+        .environmentObject(AuthenticationManager())
 }

@@ -10,11 +10,15 @@ import SwiftUI
 struct ContentView: View {
     
     @State var selectedTab: MenuTab = .receipt
+    
+    @StateObject var authManager = AuthenticationManager()
+
         
     var body: some View {
         TabView(selection: $selectedTab) {
             MenuTabView()
         }
+        .environmentObject(authManager)
     }
 }
 
