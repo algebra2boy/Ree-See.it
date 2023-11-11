@@ -10,32 +10,36 @@ import SwiftUI
 struct ReceiptCardView: View {
     let receipt: Receipt
     var body: some View {
-        HStack(spacing: 20) {
-            Spacer()
+        HStack {
             Image(systemName: "camera.fill")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 50, height: 50)
-            
-            VStack(alignment: .leading, spacing: 10) {
+                .frame(width: 32, height: 32)
+                .foregroundColor(.primary) // Use the primary color for the icon
+
+            VStack(alignment: .leading, spacing: 4) { // Reduced spacing
                 Text(receipt.name)
                     .font(.headline)
                     .foregroundColor(.primary)
                 Text(receipt.category)
+                    .font(.subheadline) // Make the category text a bit smaller
+                    .foregroundColor(.secondary) // Use a secondary color for less emphasis
             }
-            Spacer()
-            Spacer()
             
+            Spacer() // Push everything to the left and price to the right
             
             Text(dollarFormatter.string(from: NSNumber(value: receipt.totalPrice)) ?? "$0.00")
-                .font(.title2)
-            Spacer()
+                .font(.body) // Adjusted to .body for better balance with the rest of the content
+                .padding(.trailing, 16) // Add padding to the trailing edge
         }
+        .frame(height: 60) // Give a fixed height to each card
+        .background(Color(UIColor.systemBackground)) // Use the system background color
+        .cornerRadius(10) // Round the corners
+
     }
 }
 
+
 #Preview {
-    
-    let receipt: Receipt = Bundle.main.decode("MockReceiptData.json")[0]
-    ReceiptCardView(receipt: receipt)
+    ReceiptCardView(receipt: Receipt.receipt1)
 }

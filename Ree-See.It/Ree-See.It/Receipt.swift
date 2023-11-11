@@ -49,8 +49,8 @@ struct Item: Codable {
 
 extension Receipt {
     static let receipt1 = Receipt(id: UUID(),
-                                  name: "costco",
-                                  address: "boston",
+                                  name: "Costco",
+                                  address: "Boston",
                                   date: "2023-10-11",
                                   item: [],
                                   totalPrice: 129.99,
@@ -58,4 +58,49 @@ extension Receipt {
                                   message: "why is food so expensive",
                                   isVerified: false,
                                   receiptMethod: "API")
+
+    static let receipt2 = Receipt(id: UUID(),
+                                  name: "Walmart",
+                                  address: "Cambridge",
+                                  date: "2023-10-12",
+                                  item: [],
+                                  totalPrice: 88.76,
+                                  category: "household",
+                                  message: "Got a discount",
+                                  isVerified: true,
+                                  receiptMethod: "Manual")
+
+    static let receipt3 = Receipt(id: UUID(),
+                                  name: "Target",
+                                  address: "Somerville",
+                                  date: "2023-10-13",
+                                  item: [],
+                                  totalPrice: 57.45,
+                                  category: "electronics",
+                                  message: "Needed a new mouse",
+                                  isVerified: false,
+                                  receiptMethod: "OCR")
+
+    static let receipt4 = Receipt(id: UUID(),
+                                  name: "Best Buy",
+                                  address: "Quincy",
+                                  date: "2023-10-14",
+                                  item: [],
+                                  totalPrice: 204.99,
+                                  category: "electronics",
+                                  message: "New headphones",
+                                  isVerified: true,
+                                  receiptMethod: "API")
+
+    static let receipt5 = Receipt(id: UUID(),
+                                  name: "Trader Joe's",
+                                  address: "Arlington",
+                                  date: "2023-10-15",
+                                  item: [],
+                                  totalPrice: 150.23,
+                                  category: "groceries",
+                                  message: "Weekly groceries",
+                                  isVerified: true,
+                                  receiptMethod: "Manual")
 }
+

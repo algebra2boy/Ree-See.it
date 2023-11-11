@@ -11,7 +11,6 @@
 		425428742AFF424300117B18 /* ReceiptCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425428732AFF424300117B18 /* ReceiptCardView.swift */; };
 		425428772AFF447C00117B18 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425428762AFF447C00117B18 /* NumberFormatter.swift */; };
 		425428792AFF459500117B18 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425428782AFF459500117B18 /* Receipt.swift */; };
-		4254287C2AFF481600117B18 /* MockReceiptData.json in Resources */ = {isa = PBXBuildFile; fileRef = 4254287B2AFF481600117B18 /* MockReceiptData.json */; };
 		4254287E2AFF49C700117B18 /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4254287D2AFF49C700117B18 /* Bundle+Decode.swift */; };
 		AE29D46B2AFF35BF00D65589 /* Ree_See_ItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29D46A2AFF35BF00D65589 /* Ree_See_ItApp.swift */; };
 		AE29D46D2AFF35BF00D65589 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29D46C2AFF35BF00D65589 /* ContentView.swift */; };
@@ -27,7 +26,6 @@
 		425428732AFF424300117B18 /* ReceiptCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCardView.swift; sourceTree = "<group>"; };
 		425428762AFF447C00117B18 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		425428782AFF459500117B18 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
-		4254287B2AFF481600117B18 /* MockReceiptData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockReceiptData.json; sourceTree = "<group>"; };
 		4254287D2AFF49C700117B18 /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
 		AE29D4672AFF35BF00D65589 /* Ree-See.It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ree-See.It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE29D46A2AFF35BF00D65589 /* Ree_See_ItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ree_See_ItApp.swift; sourceTree = "<group>"; };
@@ -59,14 +57,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		4254287A2AFF47BB00117B18 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				4254287B2AFF481600117B18 /* MockReceiptData.json */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
 		AE29D45E2AFF35BF00D65589 = {
 			isa = PBXGroup;
 			children = (
@@ -87,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				425428782AFF459500117B18 /* Receipt.swift */,
-				4254287A2AFF47BB00117B18 /* JSON */,
 				425428752AFF446000117B18 /* Extension */,
 				AED9D55F2AFF398100E27922 /* User Interface */,
 				AE29D46A2AFF35BF00D65589 /* Ree_See_ItApp.swift */,
@@ -210,7 +199,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE29D4722AFF35C100D65589 /* Preview Assets.xcassets in Resources */,
-				4254287C2AFF481600117B18 /* MockReceiptData.json in Resources */,
 				AE29D46F2AFF35C100D65589 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
