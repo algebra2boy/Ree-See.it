@@ -20,6 +20,3 @@ struct ReceiptMessageView: View {
         }
     }
 }
-#Preview {
-    ReceiptMessageView()
-}

@@ -57,7 +57,6 @@ struct MapView: View {
             if let placemark = placemarks?.first {
                 self.latitude = placemark.location?.coordinate.latitude ?? 0.0
                 self.longitude = placemark.location?.coordinate.longitude ?? 0.0
-                print(" iam shown")
                 self.isMapShown = true
             }
             
@@ -66,6 +65,3 @@ struct MapView: View {
 
 }
 
-#Preview {
-    MapView()
-}
