@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Receipt: Codable, Identifiable {
+struct Receipt: Codable, Identifiable, Hashable {
     var id: UUID
     var name: String
     var address: String
@@ -41,7 +41,7 @@ struct Receipt: Codable, Identifiable {
 }
 
 
-struct Item: Codable {
+struct Item: Codable, Hashable {
     var name: String
     var price: Double
 }

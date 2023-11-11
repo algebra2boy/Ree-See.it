@@ -9,9 +9,12 @@ import SwiftUI
 
 struct ReceiptView: View {
     @State private var receipts: [Receipt] = [.receipt1, .receipt2, .receipt3, .receipt4, .receipt5]
-
+    
+    @State private var hasItemDeleted: Bool = false
+    @State private var toBeDeleted: IndexSet?
+    
     var body: some View {
-        NavigationStack {            
+        NavigationStack {
             Group {
                 if receipts.isEmpty {
                     EmptyReceiptView()
@@ -34,6 +37,12 @@ struct ReceiptView: View {
             }
             
             .navigationTitle("Receipts")
+            .alert("Do you want to delete this receipt on the cloud?", isPresented: $hasItemDeleted) {
+                Button("Cancel", role: .cancel) { }
+                Button("Delete", role: .destructive) {
+                    receipts.remove(atOffsets: toBeDeleted!)
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -59,10 +68,15 @@ struct ReceiptView: View {
                 }
             }
         }
+        
+        
     }
-
-    private func deleteReceipt(at offsets: IndexSet) {
-        receipts.remove(atOffsets: offsets)
+    
+    func deleteReceipt(at offsets: IndexSet) {
+        
+        self.hasItemDeleted = true
+        self.toBeDeleted = offsets
+        
     }
 }
 
