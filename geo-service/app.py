@@ -5,7 +5,7 @@ import osmnx as ox
 app = Flask(__name__)
 CORS(app, origins='http://localhost:54102')
 
-@app.get('/get-geocode')#, methods=['GET'])
+@app.get('/get-geocode')
 def get_geocode():
     address = request.args.get('address')
     
