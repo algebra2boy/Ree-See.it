@@ -17,11 +17,14 @@ struct ReceiptView: View {
                     ReceiptCardView(receipt: receipt)
                 }
                 .onDelete(perform: deleteReceipt)
+                .listRowBackground(
+                    Capsule()
+                        .fill(Color(white: 1, opacity: 0.8))
+                        .padding(3)
+                )
+                .listRowSeparator(.hidden)
             }
-            .listRowBackground(
-                Capsule()
-                    .fill(Color(white: 1, opacity: 0.8))
-            )
+            
             .navigationTitle("Receipts")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
