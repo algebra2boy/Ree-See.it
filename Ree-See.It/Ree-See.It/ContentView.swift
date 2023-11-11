@@ -10,9 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State var selectedTab: MenuTab = .receipt
-    
-    @StateObject var user: User?
-    
+        
     var body: some View {
         TabView(selection: $selectedTab) {
             MenuTabView()

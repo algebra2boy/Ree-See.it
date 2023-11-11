@@ -5,18 +5,18 @@
 //  Created by CHENGTAO on 11/11/23.
 //
 
+import SwiftUI
 import JWTDecode
 
-struct User {
-    let id: String
-    let name: String
-    let email: String
-    let emailVerified: String
-    let picture: String
-    let updatedAt: String
-}
+// User class as ObservableObject
+class User: ObservableObject {
+    @Published var id: String
+    @Published var name: String
+    @Published var email: String
+    @Published var emailVerified: Bool
+    @Published var picture: String
+    @Published var updatedAt: String
 
-extension User {
     init?(from idToken: String) {
         guard let jwt = try? decode(jwt: idToken),
               let id = jwt.subject,
@@ -30,8 +30,13 @@ extension User {
         self.id = id
         self.name = name
         self.email = email
-        self.emailVerified = String(describing: emailVerified)
+        self.emailVerified = emailVerified
         self.picture = picture
         self.updatedAt = updatedAt
     }
+}
+
+// Authentication manager to handle the user state
+class AuthenticationManager: ObservableObject {
+    @Published var user: User?
 }

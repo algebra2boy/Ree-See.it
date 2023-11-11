@@ -9,17 +9,17 @@ import SwiftUI
 import Auth0
 
 struct SignLoginView: View {
-    @State var user: User?
+    @ObservedObject var authManager = AuthenticationManager()
+
 
     var body: some View {
         // already login in
-        if let user = self.user {
+        if let user = self.authManager.user {
             VStack {
-                HeroView(user: user, action: self.logout)
-//                Button("Logout", action: self.logout)
+                ProfileView(user: user, action: self.logout)
             }
         } else {
-            Button("Login", action: self.login)
+            SignInView(action: self.login)
         }
     }
 }
@@ -31,7 +31,7 @@ extension SignLoginView {
             .start { result in
                 switch result {
                 case .success(let credentials):
-                    self.user = User(from: credentials.idToken)
+                    self.authManager.user = User(from: credentials.idToken)
                 case .failure(let error):
                     print("Failed with: \(error)")
                 }
@@ -44,7 +44,7 @@ extension SignLoginView {
             .clearSession { result in
                 switch result {
                 case .success:
-                    self.user = nil
+                    self.authManager.user = nil
                 case .failure(let error):
                     print("Failed with: \(error)")
                 }
