@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Auth0
 
 struct ReceiptView: View {
     @State private var receipts: [Receipt] = [.receipt1, .receipt2, .receipt3, .receipt4, .receipt5]
@@ -45,9 +46,9 @@ struct ReceiptView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        // Action for the leading button
-                    }) {
+                    NavigationLink {
+                        SignLoginView()
+                    } label: {
                         Image(systemName: "person.circle")
                             .font(.title)
                             .foregroundStyle(.black)
