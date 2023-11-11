@@ -45,12 +45,16 @@ struct ReceiptView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        // Action for the trailing button
-                    }) {
-                        Image(systemName: "plus")
-                            .font(.title)
-                            .foregroundStyle(.black)
+                    NavigationStack {
+                        Menu {
+                            
+                            SelectionMenu()
+                            
+                        } label: {
+                            Image(systemName: "plus")
+                                .font(.title)
+                                .foregroundStyle(.black)
+                        }
                     }
                 }
             }

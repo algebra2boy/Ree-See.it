@@ -9,24 +9,52 @@ import SwiftUI
 
 struct SelectionMenu: View {
     var body: some View {
-        SelectionItem(label: "Add Receipt", image: "list.clipboard")
-        SelectionItem(label: "Scan Receipt", image: "doc.viewfinder")
+        SelectionItem(selection: .text)
+        SelectionItem(selection: .ocr)
     }
 }
 
 struct SelectionItem: View {
     
-    let label: String
-    let image: String
+    let selection: Selection
     
     var body: some View {
-        Button {
+        NavigationLink {
+            selection.destination
             
         } label: {
-            Label(label, systemImage: image)
+            selection.label
         }
         .labelStyle(.titleAndIcon)
     }
+}
+
+enum Selection {
+    case text
+    case ocr
+    
+    var id: Selection { return self }
+    
+    @ViewBuilder
+    var label: some View {
+        switch self {
+        case .ocr:
+            Label("Scan Receipt", systemImage: "doc.viewfinder")
+        case .text:
+            Label("Add Receipt", systemImage: "list.clipboard")
+        }
+    }
+    
+    @ViewBuilder
+    var destination: some View {
+        switch self {
+        case .text:
+            ReceiptTextFormOptionView()
+        case .ocr:
+            Text("HELLO, world")
+        }
+    }
+    
 }
 
 #Preview {

@@ -83,7 +83,6 @@ struct ReceiptTextFormOptionView: View {
                             } label: {
                                 Text("")
                             }
-                            .navigationBarBackButtonHidden(true)
                         } label: {
                             FormItemLogoView(imageName: "message", rowLabel: "Note", rowTintColor: .orange)
                         }

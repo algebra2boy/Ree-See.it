@@ -13,10 +13,16 @@ struct ReceiptMessageView: View {
     var body: some View {
         
         NavigationStack {
-            TextEditor(text: $note)
-                .foregroundStyle(.secondary)
-                .navigationTitle("Leave a note to you receipt")
-                .submitLabel(.done)
+            VStack {
+                TextEditor(text: $note)
+                    .foregroundStyle(.secondary)
+                    .navigationTitle("Leave a note to you receipt")
+                    .submitLabel(.done)
+            }
+            .navigationTitle("New receipt")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
+
+
