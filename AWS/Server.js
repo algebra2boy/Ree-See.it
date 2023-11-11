@@ -60,7 +60,7 @@ app.post("/api/posts", upload.single("image"), async (req, res) =>
     }
 });
 
-app.delete("/api/posts:imageName", async (req, res) =>
+app.delete("/api/posts/:imageName", async (req, res) =>
 {
     const imageName = req.params.imageName
     if (!imageName)
