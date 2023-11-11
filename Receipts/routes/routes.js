@@ -1,8 +1,13 @@
 import express from 'express'
 import client from '../modules/db_connect.js';
+import multer from 'multer';
 
 const router = express.Router()
 const collection = client.db('Ree-See-it').collection('receipts')
+
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 router.post('/api/receipt/:user_id', async (req, res) => {
   const geoRes = await fetch(`http://127.0.0.1:54101/get-geocode?address=${req.body.address}`)
@@ -21,6 +26,10 @@ router.post('/api/receipt/:user_id', async (req, res) => {
     'isVerified':Boolean(req.body.isVerified),
     'receiptMethod':req.body.receiptMethod
   }
+
+  router.post('/api/imageUpload/:user_id', upload.single("image"), async (req, res) => {
+    const file = req.file;
+  })
 
   const doc = await collection.findOne({ 'user_id': user_id })
   doc?.receipts.push(receipt)
