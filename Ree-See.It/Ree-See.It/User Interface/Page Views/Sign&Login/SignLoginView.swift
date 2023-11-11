@@ -9,7 +9,9 @@ import SwiftUI
 import Auth0
 
 struct SignLoginView: View {
-    @ObservedObject var authManager = AuthenticationManager()
+    
+    
+    @EnvironmentObject var authManager: AuthenticationManager
 
 
     var body: some View {
