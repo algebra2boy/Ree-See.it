@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4211EF8A2AFF3E7600D1AD18 /* EmptyReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211EF892AFF3E7600D1AD18 /* EmptyReceiptView.swift */; };
+		425428742AFF424300117B18 /* ReceiptCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425428732AFF424300117B18 /* ReceiptCardView.swift */; };
+		425428772AFF447C00117B18 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425428762AFF447C00117B18 /* NumberFormatter.swift */; };
+		425428792AFF459500117B18 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425428782AFF459500117B18 /* Receipt.swift */; };
+		4254287E2AFF49C700117B18 /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4254287D2AFF49C700117B18 /* Bundle+Decode.swift */; };
+		425428862AFF6BF300117B18 /* Auth0 in Frameworks */ = {isa = PBXBuildFile; productRef = 425428852AFF6BF300117B18 /* Auth0 */; };
 		AE29D46B2AFF35BF00D65589 /* Ree_See_ItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29D46A2AFF35BF00D65589 /* Ree_See_ItApp.swift */; };
 		AE29D46D2AFF35BF00D65589 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29D46C2AFF35BF00D65589 /* ContentView.swift */; };
 		AE29D46F2AFF35C100D65589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE29D46E2AFF35C100D65589 /* Assets.xcassets */; };
@@ -22,6 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4211EF892AFF3E7600D1AD18 /* EmptyReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyReceiptView.swift; sourceTree = "<group>"; };
+		425428732AFF424300117B18 /* ReceiptCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCardView.swift; sourceTree = "<group>"; };
+		425428762AFF447C00117B18 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		425428782AFF459500117B18 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		4254287D2AFF49C700117B18 /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
 		AE29D4672AFF35BF00D65589 /* Ree-See.It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ree-See.It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE29D46A2AFF35BF00D65589 /* Ree_See_ItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ree_See_ItApp.swift; sourceTree = "<group>"; };
 		AE29D46C2AFF35BF00D65589 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,12 +53,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				425428862AFF6BF300117B18 /* Auth0 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		425428752AFF446000117B18 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				425428762AFF447C00117B18 /* NumberFormatter.swift */,
+				4254287D2AFF49C700117B18 /* Bundle+Decode.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		AE29D45E2AFF35BF00D65589 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +88,8 @@
 		AE29D4692AFF35BF00D65589 /* Ree-See.It */ = {
 			isa = PBXGroup;
 			children = (
+				425428782AFF459500117B18 /* Receipt.swift */,
+				425428752AFF446000117B18 /* Extension */,
 				AED9D55F2AFF398100E27922 /* User Interface */,
 				AE29D46A2AFF35BF00D65589 /* Ree_See_ItApp.swift */,
 				AE29D46C2AFF35BF00D65589 /* ContentView.swift */,
@@ -117,6 +140,8 @@
 			children = (
 				AED9D5662AFF3A4D00E27922 /* ReceiptView.swift */,
 				AED9D5702AFF704E00E27922 /* TextOption */,
+				4211EF892AFF3E7600D1AD18 /* EmptyReceiptView.swift */,
+				425428732AFF424300117B18 /* ReceiptCardView.swift */,
 			);
 			path = Receipt;
 			sourceTree = "<group>";
@@ -164,6 +189,9 @@
 			dependencies = (
 			);
 			name = "Ree-See.It";
+			packageProductDependencies = (
+				425428852AFF6BF300117B18 /* Auth0 */,
+			);
 			productName = "Ree-See.It";
 			productReference = AE29D4672AFF35BF00D65589 /* Ree-See.It.app */;
 			productType = "com.apple.product-type.application";
@@ -192,6 +220,9 @@
 				Base,
 			);
 			mainGroup = AE29D45E2AFF35BF00D65589;
+			packageReferences = (
+				425428842AFF6BF300117B18 /* XCRemoteSwiftPackageReference "Auth0" */,
+			);
 			productRefGroup = AE29D4682AFF35BF00D65589 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -221,8 +252,13 @@
 				AED9D5722AFF706A00E27922 /* FormItemLogoView.swift in Sources */,
 				AED9D5762AFF70AD00E27922 /* ReceiptMessageView.swift in Sources */,
 				AED9D5692AFF3A5E00E27922 /* GraphView.swift in Sources */,
+				4211EF8A2AFF3E7600D1AD18 /* EmptyReceiptView.swift in Sources */,
 				AE29D46D2AFF35BF00D65589 /* ContentView.swift in Sources */,
+				425428792AFF459500117B18 /* Receipt.swift in Sources */,
+				425428742AFF424300117B18 /* ReceiptCardView.swift in Sources */,
+				4254287E2AFF49C700117B18 /* Bundle+Decode.swift in Sources */,
 				AE29D46B2AFF35BF00D65589 /* Ree_See_ItApp.swift in Sources */,
+				425428772AFF447C00117B18 /* NumberFormatter.swift in Sources */,
 				AED9D5622AFF399B00E27922 /* MenuTabView.swift in Sources */,
 				AED9D5672AFF3A4D00E27922 /* ReceiptView.swift in Sources */,
 				AED9D56C2AFF3D5600E27922 /* SelectionMenu.swift in Sources */,
@@ -433,6 +469,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		425428842AFF6BF300117B18 /* XCRemoteSwiftPackageReference "Auth0" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/Auth0.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		425428852AFF6BF300117B18 /* Auth0 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 425428842AFF6BF300117B18 /* XCRemoteSwiftPackageReference "Auth0" */;
+			productName = Auth0;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AE29D45F2AFF35BF00D65589 /* Project object */;
 }
