@@ -1,0 +1,123 @@
+[
+  {
+    "id": "4c2a1b8e-2d7f-11ed-a261-0242ac120002",
+    "name": "Alice Johnson",
+    "address": "456 Mango Lane, San Francisco, CA 94107",
+    "date": "2023-11-10",
+    "item": [
+      {
+        "name": "Coffee",
+        "price": 2.50
+      },
+      {
+        "name": "Croissant",
+        "price": 1.75
+      }
+    ],
+    "totalPrice": 4.25,
+    "category": "Café",
+    "message": "Enjoy your breakfast!",
+    "isVerified": false,
+    "receiptMethod": "API"
+  },
+  {
+    "id": "5f2c77b6-2d7f-11ed-a261-0242ac120002",
+    "name": "Bob Smith",
+    "address": "789 Pine Road, Miami, FL 33101",
+    "date": "2023-11-09",
+    "item": [
+      {
+        "name": "T-Shirt",
+        "price": 19.99
+      },
+      {
+        "name": "Jeans",
+        "price": 39.99
+      }
+    ],
+    "totalPrice": 59.98,
+    "category": "Clothing",
+    "message": "Thanks for shopping with us!",
+    "isVerified": true,
+    "receiptMethod": "TEXT"
+  },
+  {
+    "id": "6a5c9c86-2d7f-11ed-a261-0242ac120002",
+    "name": "Cathy Lee",
+    "address": "321 Cedar Ave, Seattle, WA 98101",
+    "date": "2023-11-11",
+    "item": [
+      {
+        "name": "Laptop",
+        "price": 899.99
+      },
+      {
+        "name": "Mouse",
+        "price": 24.99
+      }
+    ],
+    "totalPrice": 924.98,
+    "category": "Electronics",
+    "message": "Hope you enjoy your new gadgets!",
+    "isVerified": true,
+    "receiptMethod": "OCR"
+  },
+  {
+    "id": "7d40b14e-2d7f-11ed-a261-0242ac120002",
+    "name": "David Green",
+    "address": "202 Oak Street, Chicago, IL 60601",
+    "date": "2023-11-08",
+    "item": [
+      {
+        "name": "Book",
+        "price": 12.99
+      }
+    ],
+    "totalPrice": 12.99,
+    "category": "Bookstore",
+    "message": "Happy reading!",
+    "isVerified": false,
+    "receiptMethod": "API"
+  },
+  {
+    "id": "8871d1fe-2d7f-11ed-a261-0242ac120002",
+    "name": "Eva Turner",
+    "address": "123 Elm St, Boston, MA 02115",
+    "date": "2023-11-07",
+    "item": [
+      {
+        "name": "Yoga Mat",
+        "price": 29.99
+      },
+      {
+        "name": "Water Bottle",
+        "price": 15.99
+      }
+    ],
+    "totalPrice": 45.98,
+    "category": "Sports",
+    "message": "Stay fit and healthy!",
+    "isVerified": true,
+    "receiptMethod": "TEXT"
+  },
+  {
+    "id": "92fcb75e-2d7f-11ed-a261-0242ac120002",
+    "name": "Frank Wilson",
+    "address": "456 Birch Lane, Denver, CO 80202",
+    "date": "2023-11-06",
+    "item": [
+      {
+        "name": "Backpack",
+        "price": 49.99
+      },
+      {
+        "name": "Sunglasses",
+        "price": 89.99
+      }
+    ],
+    "totalPrice": 139.98,
+    "category": "Outdoor",
+    "message": "Enjoy your adventures!",
+    "isVerified": true
+  }
+]

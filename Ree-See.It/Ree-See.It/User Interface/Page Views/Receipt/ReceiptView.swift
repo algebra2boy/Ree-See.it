@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ReceiptView: View {
+    
     var body: some View {
         NavigationStack {
             VStack {
