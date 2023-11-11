@@ -14,6 +14,8 @@
 		AED9D5622AFF399B00E27922 /* MenuTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D5612AFF399B00E27922 /* MenuTabView.swift */; };
 		AED9D5672AFF3A4D00E27922 /* ReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D5662AFF3A4D00E27922 /* ReceiptView.swift */; };
 		AED9D5692AFF3A5E00E27922 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D5682AFF3A5E00E27922 /* GraphView.swift */; };
+		AED9D56C2AFF3D5600E27922 /* SelectionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D56B2AFF3D5600E27922 /* SelectionMenu.swift */; };
+		AED9D56E2AFF3FE100E27922 /* ReceiptTextFormOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D56D2AFF3FE100E27922 /* ReceiptTextFormOptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		AED9D5612AFF399B00E27922 /* MenuTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabView.swift; sourceTree = "<group>"; };
 		AED9D5662AFF3A4D00E27922 /* ReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptView.swift; sourceTree = "<group>"; };
 		AED9D5682AFF3A5E00E27922 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		AED9D56B2AFF3D5600E27922 /* SelectionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionMenu.swift; sourceTree = "<group>"; };
+		AED9D56D2AFF3FE100E27922 /* ReceiptTextFormOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTextFormOptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 		AED9D55F2AFF398100E27922 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				AED9D56A2AFF3D0100E27922 /* Accessory Views */,
 				AED9D5632AFF39D200E27922 /* Page Views */,
 				AED9D5602AFF398900E27922 /* Menu Navigation */,
 			);
@@ -105,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				AED9D5662AFF3A4D00E27922 /* ReceiptView.swift */,
+				AED9D56D2AFF3FE100E27922 /* ReceiptTextFormOptionView.swift */,
 			);
 			path = Receipt;
 			sourceTree = "<group>";
@@ -115,6 +121,14 @@
 				AED9D5682AFF3A5E00E27922 /* GraphView.swift */,
 			);
 			path = Graph;
+			sourceTree = "<group>";
+		};
+		AED9D56A2AFF3D0100E27922 /* Accessory Views */ = {
+			isa = PBXGroup;
+			children = (
+				AED9D56B2AFF3D5600E27922 /* SelectionMenu.swift */,
+			);
+			path = "Accessory Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +206,8 @@
 				AE29D46B2AFF35BF00D65589 /* Ree_See_ItApp.swift in Sources */,
 				AED9D5622AFF399B00E27922 /* MenuTabView.swift in Sources */,
 				AED9D5672AFF3A4D00E27922 /* ReceiptView.swift in Sources */,
+				AED9D56C2AFF3D5600E27922 /* SelectionMenu.swift in Sources */,
+				AED9D56E2AFF3FE100E27922 /* ReceiptTextFormOptionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

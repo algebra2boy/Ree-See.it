@@ -15,12 +15,16 @@ struct ReceiptView: View {
             }
             .navigationTitle("Receipt")
             .toolbar(content: {
-                Button {
-                    
+            
+                Menu {
+                    SelectionMenu()
                 } label: {
                     Image(systemName: "plus")
+                        .font(.system(size: 30))
                 }
             })
+            
+            
         }
     }
 }
