@@ -4,6 +4,7 @@ import client from './modules/db_connect.js'
 
 const app = express()
 
+app.use(express.json())
 app.use(router)
 
 async function go(){
