@@ -11,8 +11,7 @@ struct ReceiptView: View {
     @State private var receipts: [Receipt] = [.receipt1, .receipt2, .receipt3, .receipt4, .receipt5]
 
     var body: some View {
-        NavigationStack {
-            
+        NavigationStack {            
             Group {
                 if receipts.isEmpty {
                     EmptyReceiptView()

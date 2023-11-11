@@ -20,6 +20,11 @@
 		AED9D5622AFF399B00E27922 /* MenuTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D5612AFF399B00E27922 /* MenuTabView.swift */; };
 		AED9D5672AFF3A4D00E27922 /* ReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D5662AFF3A4D00E27922 /* ReceiptView.swift */; };
 		AED9D5692AFF3A5E00E27922 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D5682AFF3A5E00E27922 /* GraphView.swift */; };
+		AED9D56C2AFF3D5600E27922 /* SelectionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D56B2AFF3D5600E27922 /* SelectionMenu.swift */; };
+		AED9D56E2AFF3FE100E27922 /* ReceiptTextFormOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D56D2AFF3FE100E27922 /* ReceiptTextFormOptionView.swift */; };
+		AED9D5722AFF706A00E27922 /* FormItemLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D5712AFF706A00E27922 /* FormItemLogoView.swift */; };
+		AED9D5742AFF708800E27922 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D5732AFF708800E27922 /* MapView.swift */; };
+		AED9D5762AFF70AD00E27922 /* ReceiptMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9D5752AFF70AD00E27922 /* ReceiptMessageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		AED9D5612AFF399B00E27922 /* MenuTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabView.swift; sourceTree = "<group>"; };
 		AED9D5662AFF3A4D00E27922 /* ReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptView.swift; sourceTree = "<group>"; };
 		AED9D5682AFF3A5E00E27922 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		AED9D56B2AFF3D5600E27922 /* SelectionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionMenu.swift; sourceTree = "<group>"; };
+		AED9D56D2AFF3FE100E27922 /* ReceiptTextFormOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTextFormOptionView.swift; sourceTree = "<group>"; };
+		AED9D5712AFF706A00E27922 /* FormItemLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormItemLogoView.swift; sourceTree = "<group>"; };
+		AED9D5732AFF708800E27922 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		AED9D5752AFF70AD00E27922 /* ReceiptMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptMessageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +110,7 @@
 		AED9D55F2AFF398100E27922 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				AED9D56A2AFF3D0100E27922 /* Accessory Views */,
 				AED9D5632AFF39D200E27922 /* Page Views */,
 				AED9D5602AFF398900E27922 /* Menu Navigation */,
 			);
@@ -128,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				AED9D5662AFF3A4D00E27922 /* ReceiptView.swift */,
+				AED9D5702AFF704E00E27922 /* TextOption */,
 				4211EF892AFF3E7600D1AD18 /* EmptyReceiptView.swift */,
 				425428732AFF424300117B18 /* ReceiptCardView.swift */,
 			);
@@ -140,6 +152,25 @@
 				AED9D5682AFF3A5E00E27922 /* GraphView.swift */,
 			);
 			path = Graph;
+			sourceTree = "<group>";
+		};
+		AED9D56A2AFF3D0100E27922 /* Accessory Views */ = {
+			isa = PBXGroup;
+			children = (
+				AED9D56B2AFF3D5600E27922 /* SelectionMenu.swift */,
+			);
+			path = "Accessory Views";
+			sourceTree = "<group>";
+		};
+		AED9D5702AFF704E00E27922 /* TextOption */ = {
+			isa = PBXGroup;
+			children = (
+				AED9D56D2AFF3FE100E27922 /* ReceiptTextFormOptionView.swift */,
+				AED9D5752AFF70AD00E27922 /* ReceiptMessageView.swift */,
+				AED9D5732AFF708800E27922 /* MapView.swift */,
+				AED9D5712AFF706A00E27922 /* FormItemLogoView.swift */,
+			);
+			path = TextOption;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +249,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AED9D5722AFF706A00E27922 /* FormItemLogoView.swift in Sources */,
+				AED9D5762AFF70AD00E27922 /* ReceiptMessageView.swift in Sources */,
 				AED9D5692AFF3A5E00E27922 /* GraphView.swift in Sources */,
 				4211EF8A2AFF3E7600D1AD18 /* EmptyReceiptView.swift in Sources */,
 				AE29D46D2AFF35BF00D65589 /* ContentView.swift in Sources */,
@@ -228,6 +261,9 @@
 				425428772AFF447C00117B18 /* NumberFormatter.swift in Sources */,
 				AED9D5622AFF399B00E27922 /* MenuTabView.swift in Sources */,
 				AED9D5672AFF3A4D00E27922 /* ReceiptView.swift in Sources */,
+				AED9D56C2AFF3D5600E27922 /* SelectionMenu.swift in Sources */,
+				AED9D5742AFF708800E27922 /* MapView.swift in Sources */,
+				AED9D56E2AFF3FE100E27922 /* ReceiptTextFormOptionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
