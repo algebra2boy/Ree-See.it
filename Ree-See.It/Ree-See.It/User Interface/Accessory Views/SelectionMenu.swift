@@ -51,7 +51,7 @@ enum Selection {
         case .text:
             ReceiptTextFormOptionView()
         case .ocr:
-            Text("HELLO, world")
+            PhotoPickerView()
         }
     }
     

@@ -26,7 +26,7 @@ struct PhotoPickerView: View {
                     image
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 300, height: 800)
+                        .frame(width: 300, height: 400)
                 }
                 
                 
@@ -35,7 +35,7 @@ struct PhotoPickerView: View {
                              matching: .images)
                 
                 
-                if let image {
+                if image != nil {
                     Button {
                         uploadImage()
                     } label: {
