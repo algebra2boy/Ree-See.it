@@ -20,6 +20,6 @@ async function go(){
 }
 
 app.listen(54102, () => {
-  console.log('Server started on port 3000')
-  go().then(() => console.log("AHA"));
+  console.log('Server started on port 54102')
+  go().then(() => console.log('DB connection established')).catch(() => console.log('Unable to connect to DB'));
 })
