@@ -10,7 +10,9 @@ import Charts
 
 struct GraphView: View {
     
-    @State private var renderedImage = Image(systemName: "plus")
+    private let previewImage = Image("ShareIcon")
+    
+    var chartView = PieChart()
     
     @Environment(\.displayScale) var displayScale
     
@@ -23,36 +25,28 @@ struct GraphView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    ShareLink(item: renderedImage,
-                              preview: SharePreview("Track Report", image: renderedImage))
+                    ShareLink(item: Image(uiImage: generateSnapshot()),
+                              preview:SharePreview("Track Report", image: previewImage))
                 }
-            }
-            .onAppear {
-                render()
             }
         }
         
     }
     
-    // render the image
-    @MainActor func render() {
+    @MainActor
+    private func generateSnapshot() -> UIImage {
         
-        let image = Image("R").resizable().scaledToFit().frame(width: 50)
-        
-        let renderer = ImageRenderer(content: image)
-        
-        // make sure and use the correct display scale for this device
+        let renderer = ImageRenderer(content: chartView)
         renderer.scale = displayScale
         
-        if let uiImage = renderer.uiImage {
-            print("it is working")
-            renderedImage = Image(uiImage: uiImage) 
-        }
+        return renderer.uiImage ?? UIImage()
     }
+    
+    
 }
 
 struct PieChart: View {
-    // datamodel for the pie chart
+    // data model for the pie chart
     var expenses = [
         (name: "Food", price: 120),
         (name: "Education", price: 234.3),
@@ -83,9 +77,9 @@ struct PieChart: View {
                     }
                 }
             }
-            .frame(height: 400)
+            .frame(width: 350, height: 300)
+            .padding(.horizontal)
         }
-        .padding()
     }
     
 }
