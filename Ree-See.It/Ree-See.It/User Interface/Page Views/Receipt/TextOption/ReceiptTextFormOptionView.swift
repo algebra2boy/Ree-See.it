@@ -146,103 +146,11 @@ struct ReceiptTextFormOptionView: View {
     }
 }
 
-struct ReceiptMessageView: View {
-    
-    @Binding var note: String
-    var body: some View {
-        
-        NavigationStack {
-            TextEditor(text: $note)
-                .foregroundStyle(.secondary)
-                .navigationTitle("Leave a note to you receipt")
-                .submitLabel(.done)
-        }
-    }
-}
-
-struct MapView: View {
-    
-    @Binding var isMapShown: Bool
-    @Binding var address: String
-    @Binding var latitude: Double
-    @Binding var longitude: Double
-    @FocusState var focusedField: FocusedField?
-    
-    
-    var body: some View {
-        
-        VStack {
-            
-            TextField("650 N Pleasant St, Amherst, MA", text: $address)
-                .multilineTextAlignment(.leading)
-                .focused($focusedField, equals: .address)
-                .onSubmit {
-                    convertAddressToCoordinates()
-                }
-                .submitLabel(.done)
-            
-            if isMapShown {
-                Map {
-                    Marker(address,
-                           coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
-                }
-            } else {
-                Text("Please provide full address you and press enter when you done")
-                    .font(.system(size: 20, weight: .heavy))
-                    .multilineTextAlignment(.center)
-                    .frame(width: 200)
-            }
-            
-        }
-    }
-    
-    // convert address to coordinate
-    func convertAddressToCoordinates() {
-        let geocoder = CLGeocoder()
-        
-        geocoder.geocodeAddressString(address) { placemarks, error in
-            if let error = error {
-                print("Geocoding error: \(error.localizedDescription)")
-                return
-            }
-            
-            if let placemark = placemarks?.first {
-                self.latitude = placemark.location?.coordinate.latitude ?? 0.0
-                self.longitude = placemark.location?.coordinate.longitude ?? 0.0
-                print(" iam shown")
-                self.isMapShown = true
-            }
-            
-        }
-    }
-
-}
-
 // a focus field to dismiss keyboard
 enum FocusedField {
     case name, address
 }
 
-struct FormItemLogoView: View {
-    
-    let imageName: String
-    let rowLabel: String
-    let rowTintColor: Color
-    
-    var body: some View {
-        HStack {
-            RoundedRectangle(cornerRadius: 8)
-                .frame(width: 30, height: 30)
-                .foregroundStyle(rowTintColor)
-                .overlay {
-                    Image(systemName: imageName)
-                        .foregroundStyle(.white)
-                        .fontWeight(.semibold)
-                }
-            Text(rowLabel)
-        }
-    }
-}
 
 #Preview {
     ReceiptTextFormOptionView()
