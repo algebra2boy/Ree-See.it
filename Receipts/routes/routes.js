@@ -10,7 +10,10 @@ const upload = multer({ storage: storage });
 
 router.post('/api/receipt/:user_id', async (req, res) => {
   const geoRes = await fetch(`http://127.0.0.1:54101/get-geocode?address=${req.body.address}`)
-  const geoData = await geoRes.json()
+  const geoData = geoRes.status === 200 ? await geoRes.json() : {
+    "lat": 42.3912498,
+    "long": -72.5262829
+  }
   const user_id = req.params.user_id
   const receipt = {
     'id': req.body.id,
@@ -71,9 +74,17 @@ router.post("/api/ocr/:user_id", upload.single("image"), async (req, res) => {
   const resJson = await response.json();
   console.log('3 done')
   console.log(resJson)
+  resJson['name'] = resJson.storeName
+  resJson['totalPrice'] = resJson.subtotal
+  resJson['date'] = '11/12/2023'
+  resJson['receiptMethod'] = 'OCR'
+  resJson.category = 'Groceries'
   // 4. use erica's API again to get the lat and long 
   const geoRes = await fetch(`http://127.0.0.1:54101/get-geocode?address=${resJson.address}`);
-  const geoData = await geoRes.json();
+  const geoData = geoRes.status === 200 ? await geoRes.json() : {
+    "lat": 42.3912498,
+    "long": -72.5262829
+  }
   resJson.coordinate = geoData;
   console.log('4 done')
   // 5. 
