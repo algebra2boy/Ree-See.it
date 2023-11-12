@@ -13,17 +13,17 @@
 - Online Purchase Management: Streamlines the process of tracking online shopping expenses.
 - Shared Expense Feature: Simplifies the splitting of costs among groups.
 
-# How We Built It "Ree-See-It" is developed as an iOS mobile application using Swift and SwiftUI. It features:
-
+# How We Built It 
+- "Ree-See-It" is developed as an iOS mobile application using Swift and SwiftUI. It features:
 - Microservice Architecture: Incorporates components like image processing (extract all the parsed string from the receipt), AWS S3 cloud storage (storing receipt images on the cloud in case users want to keep them for future and business management) , ChatGPT API (convert the parsed string to JSON), geolocation services (forward geocoding), and MongoDB for data storage.
 - Optical Character Recognition: Utilizes Tesseract.js for accurate OCR.
 - User Authentication: Implements comprehensive authentication using Auth0.
 
 
-# Challenges We Ran Into Our development journey encountered several hurdles, including:
+# Challenges We Ran Into
 
 - Frontend Issues: Navigational bugs and image exporting challenges.
-- Backend Complexities: Difficulties with API integration and Docker compatibility.
+- Backend Complexities: Difficulties with API integration and Docker compatibility (dependencies hell).
 - Database Management: Overcoming inconsistencies in MongoDB documents.
 
 # Accomplishments We're Proud Of Our team achieved:
@@ -31,12 +31,12 @@
 - Innovative Solution: An app that significantly contributes to resolving environmental and health concerns.
 - Effective Teamwork: Demonstrable excellence in collaboration and problem-solving.
 
-# What We Learned This project enhanced our knowledge in:
+# What We Learned:
 
 - Advanced Technology: Mastery of Swift, SwiftUI, and various backend technologies.
 - Team Collaboration: Improved teamwork skills in demanding scenarios.
 
-# What's Next for Ree-See-It Moving forward, we aim to:
+# What's Next:
 
 - Expand Features: Add more user customization options and advanced analytics.
 - Improve Scalability: Upgrade the backend for enhanced performance.
