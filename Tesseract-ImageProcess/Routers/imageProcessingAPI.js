@@ -45,6 +45,7 @@ router.post("/translate", upload.single("image"), async (req, res) => {
 
         const gptResponse = await fetch("http://localhost:3005/api/gpt", {
             method: "POST",
+            headers: { "Content-Type": "application/json"},
             body: JSON.stringify({
                 "receiptString": receipt_text
             })

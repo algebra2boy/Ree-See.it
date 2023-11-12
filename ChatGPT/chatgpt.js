@@ -50,8 +50,6 @@ Items Sold : 5
 B7 08/19/2021 17:58:17
 `;
 
-
-let parsed_strings = "";
 let content = `Give me a JSON data that contains receipt info. An object with only these key names: storeName, address, items, subtotal, category. Items are an array of item. category should just be a string. Each item has name and price.`
 
 // Configure the headers for your POST request.
@@ -62,20 +60,21 @@ const config = {
     }
 };
 
-// set up post Data
-const postData = {
-    // very great gpt 4
-    model: 'gpt-4-1106-preview',
-    response_format: {
-        // must use to enable json
-        type: "json_object",
-    },
-    messages: [
-        { role: 'user', content: content + parsed_strings }
-    ]
-};
 
-const sendPostRequest = async (req, res) => {
+const sendPostRequest = async (req, res, parsed_strings) => {
+
+    const postData = {
+        // very great gpt 4
+        model: 'gpt-4-1106-preview',
+        response_format: {
+            // must use to enable json
+            type: "json_object",
+        },
+        messages: [
+            { role: 'user', content: content + parsed_strings }
+        ]
+    };
+
     try {
         const response = await axios.post('https://api.openai.com/v1/chat/completions', postData, config);
         console.log('Response from OpenAI:', JSON.stringify(response.data));
@@ -90,13 +89,7 @@ const sendPostRequest = async (req, res) => {
 
 app.post("/api/gpt", async (req, res) => {
     const receiptStrings = req.body.receiptString;
-    // parsed_strings = receiptText1;
-    // console.log(parsed_strings);
-
-    // const response = sendPostRequest(req, res);
-
-    // parsed_strings = "";
-    res.status(200).json({ "data": receiptStrings });
+    sendPostRequest(req, res, receiptStrings);
 })
 
 // sendPostRequest();
