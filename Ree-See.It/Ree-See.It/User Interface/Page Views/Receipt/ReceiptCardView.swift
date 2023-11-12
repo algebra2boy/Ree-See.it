@@ -11,12 +11,19 @@ struct ReceiptCardView: View {
     let receipt: Receipt
     var body: some View {
         HStack {
-            Image(systemName: "camera.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 32, height: 32)
-                .foregroundColor(.primary) // Use the primary color for the icon
-
+            AsyncImage(url: URL(string: receipt.imageUrl ?? "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_photos/000/308/828/datas/full_width.png")) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50)
+            } placeholder: {
+                Image(systemName: "camera.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50)
+                    .foregroundColor(.primary) // Use the primary color for the icon
+            }
+            
             VStack(alignment: .leading, spacing: 4) { // Reduced spacing
                 Text(receipt.name)
                     .font(.headline)
@@ -33,7 +40,7 @@ struct ReceiptCardView: View {
         .frame(height: 60) // Give a fixed height to each card
         .background(Color(UIColor.systemBackground)) // Use the system background color
         .cornerRadius(10) // Round the corners
-
+        
     }
 }
 

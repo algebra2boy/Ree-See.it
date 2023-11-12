@@ -9,6 +9,10 @@ import SwiftUI
 import MapKit
 
 
+extension MKCoordinateSpan {
+    static let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+}
+
 struct OCRReceiptDetailView: View {
     let receipt: Receipt
     
@@ -17,7 +21,7 @@ struct OCRReceiptDetailView: View {
         NavigationStack {
             List {
                 Section(header: Text("ITEMS")) {
-                    ForEach(receipt.item, id: \.name) { item in
+                    ForEach(receipt.items, id: \.name) { item in
                         HStack {
                             Text(item.name)
                                 .bold()
@@ -36,8 +40,8 @@ struct OCRReceiptDetailView: View {
                 }
                 
                 Section(header: Text("LOCATION")) {
-                    Map {
-                        Marker("Receipt", coordinate: CLLocationCoordinate2D(latitude: receipt.coordinate.lat, longitude: receipt.coordinate.long))
+                    Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: receipt.coordinate.lat, longitude: receipt.coordinate.lon), span: .defaultSpan))){
+                        Marker("Receipt", coordinate: CLLocationCoordinate2D(latitude: receipt.coordinate.lat, longitude: receipt.coordinate.lon))
                     }
                     .frame(height: 300)
                 }

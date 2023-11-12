@@ -28,7 +28,7 @@ struct ReceiptView: View {
                     List {
                         ForEach(filteredReceipts.count > 0 ? filteredReceipts : receipts, id: \.id) { receipt in
                             Group {
-                                if receipt.isVerified {
+                                if receipt.receiptMethod == "OCR" {
                                     NavigationLink {
                                         OCRReceiptDetailView(receipt: receipt)
                                     } label: {
@@ -50,7 +50,7 @@ struct ReceiptView: View {
                 }
             }
             .searchable(text: $searchText, prompt: "Search for receipt")
-            .onChange(of: searchText) { _ in
+            .onChange(of: searchText) {
                 filterReceipt()
             }
             .navigationTitle("Receipts")
@@ -74,31 +74,59 @@ struct ReceiptView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        // Define your action for the button here.
-                    }) {
-                        Image(systemName: "plus")
-                            .font(.title)
-                            .foregroundStyle(.black)
+                    NavigationStack {
+                        Menu {
+                            
+                            SelectionMenu()
+                            
+                        } label: {
+                            Image(systemName: "plus")
+                                .font(.title)
+                                .foregroundStyle(.black)
+                        }
                     }
                 }
             }
         }
+        .task {
+            do {
+                receipts = try await fetchReceipts()
+                print(receipts)
+            } catch {
+                print(error)
+            }
+        }
     }
-
+    
     func deleteReceipt(at offsets: IndexSet) {
         toBeDeleted = offsets
         hasItemDeleted = true
     }
-
+    
     func filterReceipt() {
         filteredReceipts = receipts.filter { $0.name.localizedCaseInsensitiveContains(searchText.lowercased()) ||
             $0.category.localizedCaseInsensitiveContains(searchText.lowercased())
         }
     }
+    
+    func fetchReceipts() async throws -> [Receipt] {
+        let url = URL(string: "http://localhost:3004/api/receipt/1234")!
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let decoded = try JSONDecoder().decode(Receipts.self, from: data)
+        
+        return decoded.receipts
+        
+    }
 }
 
-
+//struct NotLoginView: View {
+//    var body: some View {
+//        Text("You have to login in order to see your receipts")
+//            .multilineTextAlignment(.center)
+//    }
+//}
 
 
 #Preview {

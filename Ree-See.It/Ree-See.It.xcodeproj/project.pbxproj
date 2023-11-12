@@ -339,7 +339,6 @@
 				AE29D46B2AFF35BF00D65589 /* Ree_See_ItApp.swift in Sources */,
 				425428772AFF447C00117B18 /* NumberFormatter.swift in Sources */,
 				428BF7C22B005F26001F14A5 /* CategoryTagView.swift in Sources */,
-				428BF7B82B000EB1001F14A5 /* UIimageEditor.swift in Sources */,
 				AED9D5622AFF399B00E27922 /* MenuTabView.swift in Sources */,
 				428BF7BA2B002260001F14A5 /* SignInView.swift in Sources */,
 				AED9D5672AFF3A4D00E27922 /* ReceiptView.swift in Sources */,
@@ -491,12 +490,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "algebra2boy.Ree-See-It";
+				PRODUCT_BUNDLE_IDENTIFIER = "chengtao.Ree-See-It";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -521,12 +521,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "algebra2boy.Ree-See-It";
+				PRODUCT_BUNDLE_IDENTIFIER = "chengtao.Ree-See-It";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

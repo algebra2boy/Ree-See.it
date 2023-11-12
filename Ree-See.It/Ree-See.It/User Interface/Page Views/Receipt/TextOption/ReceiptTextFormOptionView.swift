@@ -15,11 +15,11 @@ struct ReceiptTextFormOptionView: View {
     @State private var date: Date = Date()
     @State private var category: String = "Food"
     @State private var note: String = ""
-    @State private var address: String = ""
+    @State private var address: String = "650N Pleasant Street, Amherst, MA"
     @State private var price: Double = 0.0
     
-    @State private var latitude: Double = 0.0
-    @State private var longitude: Double = 0.0
+    @State private var latitude: Double = 42.3779741
+    @State private var longitude: Double = -72.5199155
     @State private var isMapShown: Bool = false
     
     @State private var isModalShown: Bool = false
@@ -168,6 +168,10 @@ struct ReceiptTextFormOptionView: View {
             
             
         }
+    }
+    
+    func makeReceipt() {
+        
     }
 }
 
