@@ -29,86 +29,87 @@ struct ReceiptView: View {
                     List {
                         ForEach(filteredReceipts.count > 0 ? filteredReceipts : receipts, id: \.id) { receipt in
                             ReceiptCardView(receipt: receipt)
-                        ForEach(receipts, id: \.id) { receipt in
-                            Group {
-                                if receipt.isVerified {
-                                    NavigationLink {
-                                       OCRReceiptDetailView(receipt: receipt)
-                                    } label: {
+                            ForEach(receipts, id: \.id) { receipt in
+                                Group {
+                                    if receipt.isVerified {
+                                        NavigationLink {
+                                            OCRReceiptDetailView(receipt: receipt)
+                                        } label: {
+                                            ReceiptCardView(receipt: receipt)
+                                        }
+                                    } else {
                                         ReceiptCardView(receipt: receipt)
                                     }
-                                } else {
-                                    ReceiptCardView(receipt: receipt)
+                                }
+                            }
+                            .onDelete(perform: deleteReceipt)
+                            .listRowBackground(
+                                RoundedRectangle(
+                                    cornerSize: CGSize(width: 20, height: 10))
+                                .fill(Color(white: 1, opacity: 0.8))
+                                .padding(3)
+                            )
+                            .listRowSeparator(.hidden) // hide the line
+                        }
+                    }
+                }
+                    .searchable(text: $searchText, prompt: "Search for receipt")
+                    .onChange(of: searchText) {
+                        filterReceipt()
+                    }
+                    .navigationTitle("Receipts")
+                    .alert("Do you want to delete this receipt on the cloud?", isPresented: $hasItemDeleted) {
+                        Button("Cancel", role: .cancel) { }
+                        Button("Delete", role: .destructive) {
+                            receipts.remove(atOffsets: toBeDeleted!)
+                        }
+                    }
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            NavigationLink {
+                                SignLoginView()
+                            } label: {
+                                HStack {
+                                    UserAsyncImage(imageUrl: authManager.user?.picture, width: 40, height: 40)
+                                    
+                                    Text("Hi, \(authManager.user?.name ?? "welcome to Ree See it")")
                                 }
                             }
                         }
-                        .onDelete(perform: deleteReceipt)
-                        .listRowBackground(
-                            RoundedRectangle(
-                                cornerSize: CGSize(width: 20, height: 10))
-                            .fill(Color(white: 1, opacity: 0.8))
-                            .padding(3)
-                        )
-                        .listRowSeparator(.hidden) // hide the line
-                    }
-                }
-            }
-            .searchable(text: $searchText, prompt: "Search for receipt")
-            .onChange(of: searchText) {
-                filterReceipt()
-            }
-            .navigationTitle("Receipts")
-            .alert("Do you want to delete this receipt on the cloud?", isPresented: $hasItemDeleted) {
-                Button("Cancel", role: .cancel) { }
-                Button("Delete", role: .destructive) {
-                    receipts.remove(atOffsets: toBeDeleted!)
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationLink {
-                        SignLoginView()
-                    } label: {
-                        HStack {
-                            UserAsyncImage(imageUrl: authManager.user?.picture, width: 40, height: 40)
-                            
-                            Text("Hi, \(authManager.user?.name ?? "welcome to Ree See it")")
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            NavigationStack {
+                                Menu {
+                                    
+                                    SelectionMenu()
+                                    
+                                } label: {
+                                    Image(systemName: "plus")
+                                        .font(.title)
+                                        .foregroundStyle(.black)
+                                }
+                            }
                         }
                     }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationStack {
-                        Menu {
-                            
-                            SelectionMenu()
-                            
-                        } label: {
-                            Image(systemName: "plus")
-                                .font(.title)
-                                .foregroundStyle(.black)
-                        }
-                    }
-                }
+            }
+            
+        }
+        
+        func deleteReceipt(at offsets: IndexSet) {
+            receipts.remove(atOffsets: offsets)
+        }
+        
+        func filterReceipt() {
+            filteredReceipts = receipts.filter { $0.name.localizedCaseInsensitiveContains(searchText.lowercased()) ||
+                $0.category.localizedCaseInsensitiveContains(searchText.lowercased())
             }
         }
         
     }
-    
-    func deleteReceipt(at offsets: IndexSet) {
-        receipts.remove(atOffsets: offsets)
-    }
-    
-    func filterReceipt() {
-        filteredReceipts = receipts.filter
-        { $0.name.localizedCaseInsensitiveContains(searchText.lowercased()) ||
-            $0.category.localizedCaseInsensitiveContains(searchText.lowercased())
-        }
-    }
 }
 
 
 
-#Preview {
-    ReceiptView()
-        .environmentObject(AuthenticationManager())
-}
+//#Preview {
+//    ReceiptView()
+//        .environmentObject(AuthenticationManager())
+//}
