@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignInView: View {
 //    let action: () -> Void
+    let action: () -> Void
 
     var body: some View {
         VStack {
@@ -33,7 +34,7 @@ struct SignInView: View {
             Spacer()
                 Button {
                     // Action for the button
-//                    action()
+                    action()
                 } label: {
                     Text("Sign in")
                         .frame(maxWidth: .infinity)
@@ -52,7 +53,7 @@ struct SignInView: View {
     }
 }
 
-#Preview {
-    SignInView()
-}
+//#Preview {
+//    SignInView()
+//}
 

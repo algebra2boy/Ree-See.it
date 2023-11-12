@@ -21,8 +21,7 @@ struct SignLoginView: View {
                 ProfileView(user: user, action: self.logout)
             }
         } else {
-//            SignInView(action: self.login)
-            SignInView()
+            SignInView(action: self.login)
         }
     }
 }
