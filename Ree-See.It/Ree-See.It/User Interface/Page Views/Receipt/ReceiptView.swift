@@ -15,17 +15,26 @@ struct ReceiptView: View {
     @State private var toBeDeleted: IndexSet?
     
     @EnvironmentObject var authManager: AuthenticationManager
-
+    
     var body: some View {
         NavigationStack {
             Group {
                 if receipts.isEmpty {
                     EmptyReceiptView()
                 } else {
-                    
                     List {
                         ForEach(receipts, id: \.id) { receipt in
-                            ReceiptCardView(receipt: receipt)
+                            Group {
+                                if receipt.isVerified {
+                                    NavigationLink {
+                                       OCRReceiptDetailView(receipt: receipt)
+                                    } label: {
+                                        ReceiptCardView(receipt: receipt)
+                                    }
+                                } else {
+                                    ReceiptCardView(receipt: receipt)
+                                }
+                            }
                         }
                         .onDelete(perform: deleteReceipt)
                         .listRowBackground(
@@ -38,7 +47,6 @@ struct ReceiptView: View {
                     }
                 }
             }
-            
             .navigationTitle("Receipts")
             .alert("Do you want to delete this receipt on the cloud?", isPresented: $hasItemDeleted) {
                 Button("Cancel", role: .cancel) { }
@@ -73,7 +81,6 @@ struct ReceiptView: View {
                 }
             }
         }
-        
         
     }
     
