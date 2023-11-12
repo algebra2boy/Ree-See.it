@@ -11,6 +11,8 @@ import Auth0
 struct ReceiptView: View {
     @State private var receipts: [Receipt] = [.receipt1, .receipt2, .receipt3, .receipt4, .receipt5]
     
+    @State private var filteredReceipts: [Receipt] = []
+    
     @State private var hasItemDeleted: Bool = false
     @State private var toBeDeleted: IndexSet?
     @State private var isLogoPressed: Bool = false
@@ -26,7 +28,7 @@ struct ReceiptView: View {
                 } else {
                     
                     List {
-                        ForEach(receipts, id: \.id) { receipt in
+                        ForEach(filteredReceipts.count > 0 ? filteredReceipts : receipts, id: \.id) { receipt in
                             ReceiptCardView(receipt: receipt)
                         }
                         .onDelete(perform: deleteReceipt)
@@ -40,10 +42,9 @@ struct ReceiptView: View {
                     }
                 }
             }
-            .searchable(text: $searchText, prompt: "Search for receipt") {
-                ForEach(receipts, id: \.id) { receipt in
-                    ReceiptCardView(receipt: receipt)
-                }
+            .searchable(text: $searchText, prompt: "Search for receipt")
+            .onChange(of: searchText) {
+                filterReceipt()
             }
 
             .navigationTitle("Receipts")
@@ -85,9 +86,13 @@ struct ReceiptView: View {
     }
     
     func deleteReceipt(at offsets: IndexSet) {
-        self.hasItemDeleted = true
-        if let offsets = offsets {
-            receipts.remove(atOffsets: offsets)
+        receipts.remove(atOffsets: offsets)
+    }
+    
+    func filterReceipt() {
+        filteredReceipts = receipts.filter
+        { $0.name.localizedCaseInsensitiveContains(searchText.lowercased()) ||
+            $0.category.localizedCaseInsensitiveContains(searchText.lowercased())
         }
     }
 }
