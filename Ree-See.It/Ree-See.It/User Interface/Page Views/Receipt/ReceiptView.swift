@@ -19,17 +19,28 @@ struct ReceiptView: View {
     @State private var searchText: String = ""
     
     @EnvironmentObject var authManager: AuthenticationManager
-
+    
     var body: some View {
         NavigationStack {
             Group {
                 if receipts.isEmpty {
                     EmptyReceiptView()
                 } else {
-                    
                     List {
                         ForEach(filteredReceipts.count > 0 ? filteredReceipts : receipts, id: \.id) { receipt in
                             ReceiptCardView(receipt: receipt)
+                        ForEach(receipts, id: \.id) { receipt in
+                            Group {
+                                if receipt.isVerified {
+                                    NavigationLink {
+                                       OCRReceiptDetailView(receipt: receipt)
+                                    } label: {
+                                        ReceiptCardView(receipt: receipt)
+                                    }
+                                } else {
+                                    ReceiptCardView(receipt: receipt)
+                                }
+                            }
                         }
                         .onDelete(perform: deleteReceipt)
                         .listRowBackground(
@@ -46,7 +57,6 @@ struct ReceiptView: View {
             .onChange(of: searchText) {
                 filterReceipt()
             }
-
             .navigationTitle("Receipts")
             .alert("Do you want to delete this receipt on the cloud?", isPresented: $hasItemDeleted) {
                 Button("Cancel", role: .cancel) { }
@@ -81,7 +91,6 @@ struct ReceiptView: View {
                 }
             }
         }
-        
         
     }
     

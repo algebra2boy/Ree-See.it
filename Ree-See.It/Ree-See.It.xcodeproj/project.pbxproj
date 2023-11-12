@@ -22,6 +22,7 @@
 		428BF7BC2B0026AB001F14A5 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF7BB2B0026AB001F14A5 /* CustomColor.swift */; };
 		428BF7BE2B002FDF001F14A5 /* UserAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF7BD2B002FDF001F14A5 /* UserAsyncImage.swift */; };
 		428BF7C22B005F26001F14A5 /* CategoryTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF7C12B005F26001F14A5 /* CategoryTagView.swift */; };
+		428BF7C52B0063C5001F14A5 /* OCRReceiptDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF7C42B0063C5001F14A5 /* OCRReceiptDetailView.swift */; };
 		AE29D46B2AFF35BF00D65589 /* Ree_See_ItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29D46A2AFF35BF00D65589 /* Ree_See_ItApp.swift */; };
 		AE29D46D2AFF35BF00D65589 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29D46C2AFF35BF00D65589 /* ContentView.swift */; };
 		AE29D46F2AFF35C100D65589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE29D46E2AFF35C100D65589 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		428BF7BB2B0026AB001F14A5 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		428BF7BD2B002FDF001F14A5 /* UserAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAsyncImage.swift; sourceTree = "<group>"; };
 		428BF7C12B005F26001F14A5 /* CategoryTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTagView.swift; sourceTree = "<group>"; };
+		428BF7C42B0063C5001F14A5 /* OCRReceiptDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRReceiptDetailView.swift; sourceTree = "<group>"; };
 		AE29D4672AFF35BF00D65589 /* Ree-See.It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ree-See.It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE29D46A2AFF35BF00D65589 /* Ree_See_ItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ree_See_ItApp.swift; sourceTree = "<group>"; };
 		AE29D46C2AFF35BF00D65589 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 				428BF7B12AFFF53A001F14A5 /* Profile.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		428BF7C32B006342001F14A5 /* ReceiptDetail */ = {
+			isa = PBXGroup;
+			children = (
+				428BF7C42B0063C5001F14A5 /* OCRReceiptDetailView.swift */,
+			);
+			path = ReceiptDetail;
 			sourceTree = "<group>";
 		};
 		AE29D45E2AFF35BF00D65589 = {
@@ -175,6 +185,7 @@
 		AED9D5632AFF39D200E27922 /* Page Views */ = {
 			isa = PBXGroup;
 			children = (
+				428BF7C32B006342001F14A5 /* ReceiptDetail */,
 				428BF7A82AFFDB3C001F14A5 /* Sign&Login */,
 				AED9D5652AFF3A2300E27922 /* Graph */,
 				AED9D5642AFF3A1F00E27922 /* Receipt */,
@@ -318,6 +329,7 @@
 				AE29D46D2AFF35BF00D65589 /* ContentView.swift in Sources */,
 				428BF7B62AFFFB88001F14A5 /* ProfileView.swift in Sources */,
 				425428792AFF459500117B18 /* Receipt.swift in Sources */,
+				428BF7C52B0063C5001F14A5 /* OCRReceiptDetailView.swift in Sources */,
 				AED9D5782AFFD17000E27922 /* ModalCompletionView.swift in Sources */,
 				425428742AFF424300117B18 /* ReceiptCardView.swift in Sources */,
 				428BF7AA2AFFDB63001F14A5 /* SignLoginView.swift in Sources */,
