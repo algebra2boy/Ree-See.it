@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import osmnx as ox
 
 app = Flask(__name__)
+CORS(app, origins='http://localhost:54102')
 
-@app.route('/get-geocode')
+@app.get('/get-geocode')
 def get_geocode():
     address = request.args.get('address')
     
@@ -27,4 +29,4 @@ def get_geocode():
 
 # set to port 3000 for now since mac uses port 5000
 if __name__ == "__main__":
-    app.run(debug=True, port=3000, host="0.0.0.0")
+    app.run(debug=True, port=54101, host="0.0.0.0")
