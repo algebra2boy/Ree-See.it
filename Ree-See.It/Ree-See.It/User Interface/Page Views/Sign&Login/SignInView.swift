@@ -8,45 +8,51 @@
 import SwiftUI
 
 struct SignInView: View {
-    let action: () -> Void
+//    let action: () -> Void
 
     var body: some View {
         VStack {
-            ZStack {
+            Spacer()
+
+            Spacer()
+
+            Spacer()
+            VStack {
                 Image("SignForegroundImage")
                     .resizable()
                     .scaledToFit()
-                VStack {
-                    Spacer()
-                    Spacer()
-                    Spacer()
-                    Text("Ree See It")
+                    .frame(width: 100, height: 100)
+                Text("Ree See It")
                         .font(.title)
                         .bold()
                         .foregroundStyle(.brown)
-                    Spacer()
-                }
             }
             .padding()
-            HStack {
+            Spacer()
+            Spacer()
+            Spacer()
                 Button {
                     // Action for the button
-                    action()
+//                    action()
                 } label: {
                     Text("Sign in")
                         .frame(maxWidth: .infinity)
                     
                 }
                 .buttonStyle(.borderedProminent)
+                .accentColor(Color.brown)
                 .padding()
-            }
             Spacer()
             Spacer()
-            Spacer()
-            Spacer()
+
+
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.lightgreen)
     }
+}
+
+#Preview {
+    SignInView()
 }
 
