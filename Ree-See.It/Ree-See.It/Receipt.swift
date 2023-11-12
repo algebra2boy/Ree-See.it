@@ -124,3 +124,18 @@ extension Receipt {
                                   receiptMethod: "Manual")
 }
 
+
+extension Collection where Element == Receipt {
+    func mostExpensiveCategory() -> (category: String, totalSpent: Double)? {
+        var categoryTotals = [String: Double]()
+
+        // Aggregate total spending per category
+        for receipt in self {
+            categoryTotals[receipt.category, default: 0] += receipt.totalPrice
+        }
+
+        // Find the category with the highest spending and map the result
+        return categoryTotals.max(by: { $0.value < $1.value })
+                   .map { (category: $0.key, totalSpent: $0.value) }
+    }
+}
