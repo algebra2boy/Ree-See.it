@@ -1,10 +1,12 @@
 import express from 'express'
 import router from './routes/routes.js'
 import client from './modules/db_connect.js'
+import bodyParser from 'body-parser'
 
 const app = express()
 
 app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(router)
 
 async function go(){

@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node Server.js",
     "dev": "nodemon Server.js",
+    "docker": "pm2-runtime start Server.js --name AWS -i 5",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
