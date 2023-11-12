@@ -5,7 +5,6 @@ import multer from 'multer';
 const router = express.Router()
 const collection = client.db('Ree-See-it').collection('receipts')
 
-
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
@@ -34,19 +33,25 @@ router.post('/api/receipt/:user_id', async (req, res) => {
 })
 
 router.post('/api/imageUpload/:user_id', upload.single("image"), async (req, res) => {
-
-  const body = new FormData();
+  const imageData = new FormData();
   let blob = new Blob([req.file.buffer], { type: req.file.mimetype });
-  body.append("image", blob)
+  imageData.append("image", blob)
 
   const response = await fetch("http://localhost:3003/api/posts", {
     method: "POST",
-    body: body
+    body: imageData
   })
 
-  const json = await response.json();
-  res.send(json);
-
+  const dataJSON = await response.json()
+  const receiptID = req.body.id
+  const doc = await collection.findOne({ 'user_id': req.params.user_id })
+  const receipt = doc.receipts.find(elem => elem.id === receiptID)
+  const otherReceipts = doc.receipts.filter(elem => elem.id !== receiptID)
+  receipt['imageUrl'] = dataJSON.imageUrl
+  receipt['imageName'] = dataJSON.imageName
+  otherReceipts.push(receipt)
+  await collection.updateOne({ 'user_id': req.params.user_id }, { $set: { receipts: otherReceipts } }, { upsert: true })
+  res.send(dataJSON);
 })
 
 router.get('/api/receipt/:user_id', async (req, res) => {
