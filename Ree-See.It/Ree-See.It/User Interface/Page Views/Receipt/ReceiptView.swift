@@ -28,17 +28,16 @@ struct ReceiptView: View {
                 } else {
                     List {
                         ForEach(filteredReceipts.count > 0 ? filteredReceipts : receipts, id: \.id) { receipt in
-                            ReceiptCardView(receipt: receipt)
-                                Group {
-                                    if receipt.isVerified {
-                                        NavigationLink {
-                                            OCRReceiptDetailView(receipt: receipt)
-                                        } label: {
-                                            ReceiptCardView(receipt: receipt)
-                                        }
-                                    } else {
+                            Group {
+                                if receipt.isVerified {
+                                    NavigationLink {
+                                        OCRReceiptDetailView(receipt: receipt)
+                                    } label: {
                                         ReceiptCardView(receipt: receipt)
                                     }
+                                } else {
+                                    ReceiptCardView(receipt: receipt)
+                                }
                         }
                         .onDelete(perform: deleteReceipt)
                         .listRowBackground(
