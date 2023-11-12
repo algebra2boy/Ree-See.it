@@ -21,9 +21,7 @@ struct ReceiptCardView: View {
                 Text(receipt.name)
                     .font(.headline)
                     .foregroundColor(.primary)
-                Text(receipt.category)
-                    .font(.subheadline) // Make the category text a bit smaller
-                    .foregroundColor(.secondary) // Use a secondary color for less emphasis
+                CategoryTagView(categoryTag: receipt.category, backgroundColor: .warm, foreGroundColor: .primary)
             }
             
             Spacer() // Push everything to the left and price to the right

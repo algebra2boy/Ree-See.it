@@ -22,6 +22,7 @@
 		428BF7BA2B002260001F14A5 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF7B92B002260001F14A5 /* SignInView.swift */; };
 		428BF7BC2B0026AB001F14A5 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF7BB2B0026AB001F14A5 /* CustomColor.swift */; };
 		428BF7BE2B002FDF001F14A5 /* UserAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF7BD2B002FDF001F14A5 /* UserAsyncImage.swift */; };
+		428BF7C22B005F26001F14A5 /* CategoryTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF7C12B005F26001F14A5 /* CategoryTagView.swift */; };
 		AE29D46B2AFF35BF00D65589 /* Ree_See_ItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29D46A2AFF35BF00D65589 /* Ree_See_ItApp.swift */; };
 		AE29D46D2AFF35BF00D65589 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29D46C2AFF35BF00D65589 /* ContentView.swift */; };
 		AE29D46F2AFF35C100D65589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE29D46E2AFF35C100D65589 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		428BF7B92B002260001F14A5 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		428BF7BB2B0026AB001F14A5 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		428BF7BD2B002FDF001F14A5 /* UserAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAsyncImage.swift; sourceTree = "<group>"; };
+		428BF7C12B005F26001F14A5 /* CategoryTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTagView.swift; sourceTree = "<group>"; };
 		AE29D4672AFF35BF00D65589 /* Ree-See.It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ree-See.It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE29D46A2AFF35BF00D65589 /* Ree_See_ItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ree_See_ItApp.swift; sourceTree = "<group>"; };
 		AE29D46C2AFF35BF00D65589 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			children = (
 				428BF7BD2B002FDF001F14A5 /* UserAsyncImage.swift */,
 				AED9D56B2AFF3D5600E27922 /* SelectionMenu.swift */,
+				428BF7C12B005F26001F14A5 /* CategoryTagView.swift */,
 			);
 			path = "Accessory Views";
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				4254287E2AFF49C700117B18 /* Bundle+Decode.swift in Sources */,
 				AE29D46B2AFF35BF00D65589 /* Ree_See_ItApp.swift in Sources */,
 				425428772AFF447C00117B18 /* NumberFormatter.swift in Sources */,
+				428BF7C22B005F26001F14A5 /* CategoryTagView.swift in Sources */,
 				428BF7B82B000EB1001F14A5 /* UIimageEditor.swift in Sources */,
 				AED9D5622AFF399B00E27922 /* MenuTabView.swift in Sources */,
 				428BF7BA2B002260001F14A5 /* SignInView.swift in Sources */,
