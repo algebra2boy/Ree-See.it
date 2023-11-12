@@ -14,6 +14,7 @@
 		4254287E2AFF49C700117B18 /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4254287D2AFF49C700117B18 /* Bundle+Decode.swift */; };
 		425428862AFF6BF300117B18 /* Auth0 in Frameworks */ = {isa = PBXBuildFile; productRef = 425428852AFF6BF300117B18 /* Auth0 */; };
 		428BF7B82B000EB1001F14A5 /* UIimageEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428BF7B72B000EB1001F14A5 /* UIimageEditor.swift */; };
+		42B5F80B2B008D94004B38F4 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B5F80A2B008D94004B38F4 /* ChartsView.swift */; };
 		AE29D46B2AFF35BF00D65589 /* Ree_See_ItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29D46A2AFF35BF00D65589 /* Ree_See_ItApp.swift */; };
 		AE29D46D2AFF35BF00D65589 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE29D46C2AFF35BF00D65589 /* ContentView.swift */; };
 		AE29D46F2AFF35C100D65589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE29D46E2AFF35C100D65589 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		425428782AFF459500117B18 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		4254287D2AFF49C700117B18 /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
 		428BF7B72B000EB1001F14A5 /* UIimageEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIimageEditor.swift; sourceTree = "<group>"; };
+		42B5F80A2B008D94004B38F4 /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
 		AE29D4672AFF35BF00D65589 /* Ree-See.It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ree-See.It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE29D46A2AFF35BF00D65589 /* Ree_See_ItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ree_See_ItApp.swift; sourceTree = "<group>"; };
 		AE29D46C2AFF35BF00D65589 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				AED9D5682AFF3A5E00E27922 /* GraphView.swift */,
+				42B5F80A2B008D94004B38F4 /* ChartsView.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				4254287E2AFF49C700117B18 /* Bundle+Decode.swift in Sources */,
 				AE29D46B2AFF35BF00D65589 /* Ree_See_ItApp.swift in Sources */,
 				425428772AFF447C00117B18 /* NumberFormatter.swift in Sources */,
+				42B5F80B2B008D94004B38F4 /* ChartsView.swift in Sources */,
 				428BF7B82B000EB1001F14A5 /* UIimageEditor.swift in Sources */,
 				AED9D5622AFF399B00E27922 /* MenuTabView.swift in Sources */,
 				AED9D5672AFF3A4D00E27922 /* ReceiptView.swift in Sources */,
