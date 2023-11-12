@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  AWS:
+    build: ./AWS
+    ports:
+      - "3003:3003"
+  GPT:
+    build: ./ChatGPT
+    ports:
+      - "3005:3005"
+  Geo:
+    build: ./geo-service
+    ports:
+      - "3000:3000"
+  Receipt:
+    build: ./Receipt
+    ports:
+      - "3004:54102"
+  Tessreact:
+    build: ./Tessreact-ImageProcess
+    ports:
+      - "3003:3003"
