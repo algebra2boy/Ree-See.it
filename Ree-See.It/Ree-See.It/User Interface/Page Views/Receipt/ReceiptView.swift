@@ -20,9 +20,30 @@ struct ReceiptView: View {
     @EnvironmentObject var authManager: AuthenticationManager
     
     var body: some View {
+        
         NavigationStack {
             Group {
-                if receipts.isEmpty {
+                
+                if authManager.user == nil {
+                    VStack(spacing: 20) {
+                        Spacer()
+                        Image(systemName: "person.badge.key")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 150, height: 150)
+                            .shadow(radius: 10)
+//                            .offset(x: -15)
+                            .padding(.top, 50)
+                        
+                        Text("You haven't logged into your account yet, please try login in")
+                            .font(.system(.title, weight: .light))
+                            .multilineTextAlignment(.center)
+                        
+                        Spacer()
+                        Spacer()
+                        
+                    }
+                } else if receipts.isEmpty {
                     EmptyReceiptView()
                 } else {
                     List {
@@ -117,7 +138,7 @@ struct ReceiptView: View {
     }
     
     func fetchReceipts() async throws -> [Receipt] {
-        let url = URL(string: "http://localhost:3004/api/receipt/1234")!
+        let url = URL(string: "http://localhost:54102/api/receipt/1234")!
         
         let (data, _) = try await URLSession.shared.data(from: url)
         

@@ -10,11 +10,11 @@ const upload = multer({ storage: storage })
 
 router.post('/api/receipt/:user_id', async (req, res) => {
   const geoRes = await fetch(
-    `http://127.0.0.1:3000/get-geocode?address=${req.body.address}`
+    `http://127.0.0.1:54101/get-geocode?address=${req.body.address}`
   )
   const geoData =
     geoRes.status === 200
-      ? await geoRes.json()
+      ? (await geoRes.json()).coordinate
       : {
           lat: 42.3912498,
           lon: -72.5262829,
@@ -101,7 +101,7 @@ router.post('/api/ocr/:user_id', upload.single('image'), async (req, res) => {
   )
   const geoData =
     geoRes.status === 200
-      ? await geoRes.json()
+      ? (await geoRes.json()).coordinate
       : {
           lat: 42.3912498,
           lon: -72.5262829,

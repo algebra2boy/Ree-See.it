@@ -128,6 +128,10 @@ struct ReceiptTextFormOptionView: View {
                             
                             Button(action: {
                                 // TODO: Send HTTP request
+                                Task {
+                                    
+                                    await makeReceipt()
+                                }
                                 isModalShown.toggle()
                             }) {
                                 Spacer()
@@ -169,27 +173,22 @@ struct ReceiptTextFormOptionView: View {
     }
     
     func makeReceipt() async {
-        guard let url = URL(string: "http://localhost:3004/api/receipt/1234") else { return }
+        guard let url = URL(string: "http://localhost:54102/api/receipt/1234") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let receiptData = [
-            "id": UUID().uuidString,
-            "name": name,
-            "address": address,
-            "date": "11/12/2023",
-            "items": [],
-            "totalPrice": price,
-            "category": category,
-            "message": note,
-            "isVerified": false,
-            "receiptMethod": "TEXT",
-        ] as [String : Any]
+        
+        
+        let data = Receipt(id: UUID().uuidString, name: name, address: address, coordinate: Coordinate(lat: 1, lon: 2), date: "11/12/2023", item: [
+            Item(name: "apple", price: 1),
+            Item(name: "banana", price: 2),
+            Item(name: "lemon", price: 3)
+        ], totalPrice: price, category: category, message: note, isVerified: true, receiptMethod: "OCR")
         
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: receiptData, options: [])
+            let jsonData = try JSONEncoder().encode(data)
             request.httpBody = jsonData
             
             let (_, response) = try await URLSession.shared.data(for: request)
