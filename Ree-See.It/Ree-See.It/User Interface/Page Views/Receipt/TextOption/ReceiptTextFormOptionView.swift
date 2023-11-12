@@ -165,22 +165,51 @@ struct ReceiptTextFormOptionView: View {
             .navigationTitle("New receipt")
             .navigationBarTitleDisplayMode(.inline)
             
-            
-            
         }
     }
     
-    func makeReceipt() {
+    func makeReceipt() async {
+        guard let url = URL(string: "http://localhost:3004/api/receipt/1234") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let receiptData = [
+            "id": UUID().uuidString,
+            "name": name,
+            "address": address,
+            "date": "11/12/2023",
+            "items": [],
+            "totalPrice": price,
+            "category": category,
+            "message": note,
+            "isVerified": false,
+            "receiptMethod": "TEXT",
+        ] as [String : Any]
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: receiptData, options: [])
+            request.httpBody = jsonData
+            
+            let (_, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                return
+            }
+            // Handle the response data as needed
+        } catch {
+            print(error.localizedDescription)
+        }
+        
         
     }
-}
-
-// a focus field to dismiss keyboard
-enum FocusedField {
-    case name, address
-}
-
-
-#Preview {
-    ReceiptTextFormOptionView()
-}
+    
+    // a focus field to dismiss keyboard
+    enum FocusedField {
+        case name, address
+    }
+    
+    
+    #Preview {
+        ReceiptTextFormOptionView()
+    }
