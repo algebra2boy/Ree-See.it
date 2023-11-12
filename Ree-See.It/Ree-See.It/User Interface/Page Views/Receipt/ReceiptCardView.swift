@@ -6,22 +6,30 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ReceiptCardView: View {
     let receipt: Receipt
+    
+    @State var photoItem: PhotosPickerItem?
+    @State var image: Image?
+    
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: receipt.imageUrl ?? "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_photos/000/308/828/datas/full_width.png")) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50)
-            } placeholder: {
-                Image(systemName: "camera.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50)
-                    .foregroundColor(.primary) // Use the primary color for the icon
+            
+            NavigationStack {
+                Menu {
+                    
+                    NavigationLink {
+                        PhotoPickerView(photoItem: $photoItem, image: $image, photoNetworkViewModel: PhotoNetworkViewModel(), isAlertShown: false)
+                    } label: {
+                        Text("Take a picture")
+                    }
+                    
+                } label: {
+                    userImage(receipt: receipt, width: 60, image: $image)
+                }
+                
             }
             
             VStack(alignment: .leading, spacing: 4) { // Reduced spacing
@@ -44,7 +52,39 @@ struct ReceiptCardView: View {
         
     }
 }
-
+    
+struct userImage: View {
+    
+    let receipt: Receipt
+    let width: Double
+    @Binding var image: Image?
+    
+    
+    var body: some View {
+        
+        if let image = image {
+            image
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50)
+                .foregroundColor(.primary)
+        } else {
+            
+            AsyncImage(url: URL(string: receipt.imageUrl ?? "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_photos/000/308/828/datas/full_width.png")) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50)
+            } placeholder: {
+                Image(systemName: "camera.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 50)
+                    .foregroundColor(.primary) // Use the primary color for the icon
+            }
+        }
+    }
+}
 
 #Preview {
     ReceiptCardView(receipt: Receipt.receipt1)
