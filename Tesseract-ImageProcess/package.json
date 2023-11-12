@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "image-processing.js",
+  "type": "module",
   "scripts": {
+    "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yongye Tan",
