@@ -72,7 +72,7 @@ struct PieChart: View {
                     // add count to middle of the pie slice
                     .annotation(position: .overlay) {
                         Text(String(format: "%.0f", expense.price))
-                            .font(.headline)
+                            .font(.system(size: 16))
                             .foregroundStyle(.white)
                     }
                 }

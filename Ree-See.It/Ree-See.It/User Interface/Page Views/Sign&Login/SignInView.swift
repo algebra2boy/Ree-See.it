@@ -21,9 +21,9 @@ struct SignInView: View {
                 Image("SignForegroundImage")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 200, height: 200)
                 Text("Ree See It")
-                        .font(.title)
+                        .font(.largeTitle)
                         .bold()
                         .foregroundStyle(.brown)
             }
@@ -48,7 +48,7 @@ struct SignInView: View {
 
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.lightgreen)
+//        .background(Color.lightgreen)
     }
 }
 
