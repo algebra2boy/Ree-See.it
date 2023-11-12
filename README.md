@@ -12,30 +12,30 @@ Health Risk Mitigation: Minimizes exposure to harmful chemicals commonly found i
 Accessibility for the Visually Impaired: Integrates assistive technologies, ensuring the app is accessible to all users.
 Online Purchase Management: Streamlines the process of tracking online shopping expenses.
 Shared Expense Feature: Simplifies the splitting of costs among groups.
-How We Built It
-"Ree-See-It" is developed as an iOS mobile application using Swift and SwiftUI. It features:
+
+# How We Built It "Ree-See-It" is developed as an iOS mobile application using Swift and SwiftUI. It features:
 
 Microservice Architecture: Incorporates components like image processing, AWS S3 cloud storage, ChatGPT API, geolocation services, and MongoDB for data storage.
 Optical Character Recognition: Utilizes Tesseract.js for accurate OCR.
 User Authentication: Implements comprehensive authentication using Auth0.
-Challenges We Ran Into
-Our development journey encountered several hurdles, including:
+
+# Challenges We Ran Into Our development journey encountered several hurdles, including:
 
 Frontend Issues: Navigational bugs and image exporting challenges.
 Backend Complexities: Difficulties with API integration and Docker compatibility.
 Database Management: Overcoming inconsistencies in MongoDB documents.
-Accomplishments We're Proud Of
-Our team achieved:
+
+# Accomplishments We're Proud Of Our team achieved:
 
 Innovative Solution: An app that significantly contributes to resolving environmental and health concerns.
 Effective Teamwork: Demonstrable excellence in collaboration and problem-solving.
-What We Learned
-This project enhanced our knowledge in:
+
+# What We Learned This project enhanced our knowledge in:
 
 Advanced Technology: Mastery of Swift, SwiftUI, and various backend technologies.
 Team Collaboration: Improved teamwork skills in demanding scenarios.
-What's Next for Ree-See-It
-Moving forward, we aim to:
+
+# What's Next for Ree-See-It Moving forward, we aim to:
 
 Expand Features: Add more user customization options and advanced analytics.
 Improve Scalability: Upgrade the backend for enhanced performance.
