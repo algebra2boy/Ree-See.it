@@ -29,7 +29,6 @@ struct ReceiptView: View {
                     List {
                         ForEach(filteredReceipts.count > 0 ? filteredReceipts : receipts, id: \.id) { receipt in
                             ReceiptCardView(receipt: receipt)
-                        ForEach(receipts, id: \.id) { receipt in
                             Group {
                                 if receipt.isVerified {
                                     NavigationLink {
@@ -41,6 +40,7 @@ struct ReceiptView: View {
                                     ReceiptCardView(receipt: receipt)
                                 }
                             }
+
                         }
                         .onDelete(perform: deleteReceipt)
                         .listRowBackground(
