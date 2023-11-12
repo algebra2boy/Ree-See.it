@@ -54,6 +54,30 @@ router.post('/api/imageUpload/:user_id', upload.single("image"), async (req, res
   res.send(dataJSON);
 })
 
+router.post("/api/ocr/:user_id", upload.single("image"), async (req, res) => {
+
+  // 1. receive the image from endpoint
+  const imageBlob = new Blob([req.file.buffer], {type: req.file.mimetype});
+  const sendData = new FormData();
+  sendData.append("image", imageBlob);
+  // 2. semd the image to imageprocesing
+  const response = await fetch('http://localhost:3002/api/image/translate/');
+  // 3. receive json response from image processing
+  const resJson = await response.json();
+  // 4. use erica's API again to get the lat and long 
+  const geoRes = await fetch(`http://127.0.0.1:54101/get-geocode?address=${resJson.address}`);
+  const geoData = await geoRes.json();
+  resJson.coordinate = geoData;
+  // 5. 
+  await fetch(`http://localhost:54102/api/receipt/:${req.params.user_id}`, {
+    method: "POST",
+    headers:{
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(resJson)
+  })
+});
+
 router.get('/api/receipt/:user_id', async (req, res) => {
   const doc = await collection.findOne({ 'user_id': req.params.user_id })
   res.send(doc)
