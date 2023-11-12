@@ -66,21 +66,30 @@ struct userImage: View {
             image
                 .resizable()
                 .scaledToFit()
-                .frame(width: 50)
+                .frame(width: 60)
                 .foregroundColor(.primary)
         } else {
             
-            AsyncImage(url: URL(string: receipt.imageUrl ?? "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_photos/000/308/828/datas/full_width.png")) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50)
-            } placeholder: {
-                Image(systemName: "camera.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50)
-                    .foregroundColor(.primary) // Use the primary color for the icon
+            if let url = receipt.imageUrl {
+                
+                AsyncImage(url: URL(string: url)) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 55)
+                } placeholder: {
+                    Image(systemName: "camera.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 55)
+                        .foregroundColor(.primary) // Use the primary color for the icon
+                }
+            } else {
+                    Image(systemName: "camera.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 55)
+                        .foregroundColor(.primary) // Use the primary color for the icon
             }
         }
     }
