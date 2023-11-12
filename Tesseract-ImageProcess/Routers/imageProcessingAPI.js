@@ -40,7 +40,23 @@ router.post("/translate", upload.single("image"), async (req, res) => {
         // Remove the temporary file after processing, deallocating
         await fs.unlink(tempFilePath);
 
-        res.status(200).json({ text: receipt_text });
+
+        // send a request to CHATGPT to parse the string to json
+
+        const gptResponse = await fetch("http://localhost:3005/api/gpt", {
+            method: "POST",
+            body: JSON.stringify({
+                "receiptString": receipt_text
+            })
+        });
+
+        const json = await gptResponse.json();
+
+        if (!gptResponse.ok) {
+            res.status(400).json({ "message": "gpt is down API is down" });
+        } else {
+            res.status(200).json(json);
+        }
 
     } catch (error) {
         console.error(error);

@@ -3,8 +3,6 @@ import morgan from "morgan"
 import axios from "axios";
 import * as dotenv from 'dotenv';
 
-
-
 dotenv.config();
 
 const app = express();
@@ -14,7 +12,9 @@ app.use(morgan("dev"));
 
 
 let parsed_strings = "";
-let content = ""
+let content = `
+Give me a JSON data that contains receipt info. 
+I need an object with only these key names: name, address, items, subtotal, category. items are an array of item. category should just be a string. Each item has name and price.`
 
 // Configure the headers for your POST request.
 const config = {
@@ -50,12 +50,14 @@ const sendPostRequest = async () => {
     }
 };
 
-app.post("/api/gpt/json", async (req, res) => {
+app.post("/api/gpt", async (req, res) => {
     const receiptStrings = req.body.receiptString;
     parsed_strings = receiptStrings;
 
     const response = sendPostRequest();
+
+    parsed_strings = "";
     return response;
 })
 
-app.listen(3005, () => "gpt is listensing on port 3005");
+app.listen(3005, () => console.log("gpt is listensing on port 3005"));
