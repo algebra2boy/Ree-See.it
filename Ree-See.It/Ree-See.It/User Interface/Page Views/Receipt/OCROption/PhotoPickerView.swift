@@ -43,9 +43,9 @@ struct PhotoPickerView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .buttonStyle(.borderedProminent)
+                    .tint(.purple)
                 }
                 
-            
             }
             .onChange(of: photoItem) {
                 Task {
