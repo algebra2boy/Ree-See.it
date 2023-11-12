@@ -11,12 +11,12 @@ import SwiftUI
 
 struct PhotoPickerView: View {
     
-    @State private var photoItem: PhotosPickerItem?
-    @State private var image: Image?
+    @Binding var photoItem: PhotosPickerItem?
+    @Binding var image: Image?
     
-    @StateObject private var photoNetworkViewModel = PhotoNetworkViewModel()
+    @StateObject var photoNetworkViewModel = PhotoNetworkViewModel()
     
-    @State private var isAlertShown: Bool = false
+    @State var isAlertShown: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -95,6 +95,6 @@ struct PhotoPickerView: View {
     
 }
 
-#Preview {
-    PhotoPickerView()
-}
+//#Preview {
+//    PhotoPickerView()
+//}

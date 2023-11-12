@@ -51,7 +51,7 @@ enum Selection {
         case .text:
             ReceiptTextFormOptionView()
         case .ocr:
-            PhotoPickerView()
+            PhotoPickerView(photoItem: .constant(.none), image: .constant(.none))
         }
     }
     
