@@ -21,7 +21,7 @@ def get_geocode():
     
     geoData = {"coordinate": {
         "lat": coordinate[0],
-        "long": coordinate[1]
+        "lon": coordinate[1]
     }}
     
     # success return json with status 200
