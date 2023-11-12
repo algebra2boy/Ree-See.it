@@ -1,22 +1,26 @@
 version: "3.9"
 services:
-  AWS:
+  aws:
     build: ./AWS
     ports:
       - "3003:3003"
-  GPT:
+    command: node Server.js
+  gpt:
     build: ./ChatGPT
     ports:
       - "3005:3005"
-  Geo:
+    command: node chatgpt.js
+  geo:
     build: ./geo-service
     ports:
       - "3000:3000"
-  Receipt:
-    build: ./Receipt
+  receipt:
+    build: ./Receipts
     ports:
       - "3004:54102"
-  Tessreact:
-    build: ./Tessreact-ImageProcess
+    command: node index.js
+  tesseract:
+    build: ./Tesseract-ImageProcess
     ports:
-      - "3003:3003"
+      - "3002:3002"
+    command: node server/index.js

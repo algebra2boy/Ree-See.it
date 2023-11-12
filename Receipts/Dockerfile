@@ -7,4 +7,4 @@ COPY ./ ./
 RUN npm install
 RUN npm -g install pm2
 
-CMD [ "npm", 'run', "docker" ]
+CMD [ "npm", "run", "docker" ]
