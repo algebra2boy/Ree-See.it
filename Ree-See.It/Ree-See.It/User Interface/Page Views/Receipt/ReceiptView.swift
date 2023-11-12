@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Auth0
 
 struct ReceiptView: View {
     @State private var receipts: [Receipt] = [.receipt1, .receipt2, .receipt3, .receipt4, .receipt5]
@@ -13,6 +14,8 @@ struct ReceiptView: View {
     @State private var hasItemDeleted: Bool = false
     @State private var toBeDeleted: IndexSet?
     
+    @EnvironmentObject var authManager: AuthenticationManager
+
     var body: some View {
         NavigationStack {
             Group {
@@ -45,12 +48,14 @@ struct ReceiptView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        // Action for the leading button
-                    }) {
-                        Image(systemName: "person.circle")
-                            .font(.title)
-                            .foregroundStyle(.black)
+                    NavigationLink {
+                        SignLoginView()
+                    } label: {
+                        HStack {
+                            UserAsyncImage(imageUrl: authManager.user?.picture, width: 40, height: 40)
+                            
+                            Text("Hi, \(authManager.user?.name ?? "welcome to Ree See it")")
+                        }
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -83,4 +88,5 @@ struct ReceiptView: View {
 
 #Preview {
     ReceiptView()
+        .environmentObject(AuthenticationManager())
 }

@@ -35,7 +35,7 @@ struct MapView: View {
                            coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
                 }
             } else {
-                Text("Please provide full address you and press enter when you done")
+                Text("Please provide full address and press return when you done")
                     .font(.system(size: 20, weight: .heavy))
                     .multilineTextAlignment(.center)
                     .frame(width: 200)
