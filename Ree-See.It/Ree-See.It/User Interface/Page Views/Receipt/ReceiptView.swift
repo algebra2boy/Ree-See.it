@@ -29,7 +29,6 @@ struct ReceiptView: View {
                     List {
                         ForEach(filteredReceipts.count > 0 ? filteredReceipts : receipts, id: \.id) { receipt in
                             ReceiptCardView(receipt: receipt)
-                            ForEach(receipts, id: \.id) { receipt in
                                 Group {
                                     if receipt.isVerified {
                                         NavigationLink {
@@ -40,17 +39,15 @@ struct ReceiptView: View {
                                     } else {
                                         ReceiptCardView(receipt: receipt)
                                     }
-                                }
-                            }
-                            .onDelete(perform: deleteReceipt)
-                            .listRowBackground(
-                                RoundedRectangle(
-                                    cornerSize: CGSize(width: 20, height: 10))
-                                .fill(Color(white: 1, opacity: 0.8))
-                                .padding(3)
-                            )
-                            .listRowSeparator(.hidden) // hide the line
                         }
+                        .onDelete(perform: deleteReceipt)
+                        .listRowBackground(
+                            RoundedRectangle(
+                                cornerSize: CGSize(width: 20, height: 10))
+                            .fill(Color(white: 1, opacity: 0.8))
+                            .padding(3)
+                        )
+                        .listRowSeparator(.hidden) // hide the line
                     }
                 }
                     .searchable(text: $searchText, prompt: "Search for receipt")
