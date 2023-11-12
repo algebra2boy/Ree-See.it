@@ -37,3 +37,23 @@ extension ShapeStyle where Self == Color {
             Color(red: 213 / 255.0, green: 233 / 255.0, blue: 245 / 255.0)
         }
 }
+
+struct NavigationBarTitleColor: ViewModifier {
+    var color: UIColor
+
+    init(color: UIColor) {
+        self.color = color
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.titleTextAttributes = [.foregroundColor: color]
+        appearance.largeTitleTextAttributes = [.foregroundColor: color]
+
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    }
+
+    func body(content: Content) -> some View {
+        content
+    }
+}

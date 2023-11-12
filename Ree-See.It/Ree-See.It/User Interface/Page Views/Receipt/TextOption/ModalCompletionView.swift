@@ -42,7 +42,7 @@ struct ModalCompletionView: View {
                 }
                 
                 
-                Text("Your order has been submitted!")
+                Text("Your receipt has been submitted!")
                     .font(.system(size: 18))
                     .font(.subheadline)
                     .multilineTextAlignment(.center)

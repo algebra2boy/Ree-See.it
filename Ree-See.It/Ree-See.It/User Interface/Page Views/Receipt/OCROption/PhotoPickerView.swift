@@ -69,6 +69,7 @@ struct PhotoPickerView: View {
             }
             .navigationTitle("OCR Scanning")
         }
+
     }
     
     func uploadImage() {

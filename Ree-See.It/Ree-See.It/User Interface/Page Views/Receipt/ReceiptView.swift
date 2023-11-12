@@ -69,7 +69,7 @@ struct ReceiptView: View {
                     } label: {
                         HStack {
                             UserAsyncImage(imageUrl: authManager.user?.picture, width: 40, height: 40)
-                            Text("Hi, \(authManager.user?.name ?? "welcome to Ree See it")")
+                            Text("Hi, \(authManager.user?.name ?? "welcome to Ree See it")").foregroundStyle(Color.primary)
                         }
                     }
                 }
@@ -92,6 +92,13 @@ struct ReceiptView: View {
             do {
                 receipts = try await fetchReceipts()
                 print(receipts)
+            } catch {
+                print(error)
+            }
+        }
+        .refreshable {
+            do {
+                receipts = try await fetchReceipts()
             } catch {
                 print(error)
             }
