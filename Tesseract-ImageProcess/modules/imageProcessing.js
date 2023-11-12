@@ -17,3 +17,17 @@ const workerGeneration = async () => {
     });
     return worker;
 }
+
+export async function convertImageToStr(imageURL) {
+    console.log("Trying to convert the image to str...");
+    const worker = await workerGeneration();
+
+    const result = await worker.recognize(imageURL);
+    console.log(`parsed string is \n${result.data.text}`);
+
+    // Terminates all workers.
+    await worker.terminate();
+    console.log("Finished converting");
+
+    return result.data.text;
+}
