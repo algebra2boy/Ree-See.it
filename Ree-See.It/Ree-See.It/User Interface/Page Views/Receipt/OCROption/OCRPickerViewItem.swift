@@ -1,18 +1,16 @@
 //
-//  PhotoPickerView.swift
+//  OCRPickerViewItem.swift
 //  Ree-See.It
 //
-//  Created by Yongye Tan on 11/11/23.
+//  Created by Yongye Tan on 11/12/23.
 //
 
 import SwiftUI
 import PhotosUI
-import SwiftUI
 
-struct PhotoPickerView: View {
-    
-    @Binding var photoItem: PhotosPickerItem?
-    @Binding var image: Image?
+struct OCRPickerViewItem: View {
+    @State var photoItem: PhotosPickerItem?
+    @State var image: Image?
     
     @StateObject var photoNetworkViewModel = PhotoNetworkViewModel()
     
@@ -39,7 +37,7 @@ struct PhotoPickerView: View {
                     Button {
                         uploadImage()
                     } label: {
-                        Text("Submit the receipt/image")
+                        Text("Start scanning using our OCR")
                     }
                     .frame(maxWidth: .infinity)
                     .buttonStyle(.borderedProminent)
@@ -67,7 +65,7 @@ struct PhotoPickerView: View {
                     
                 }
             }
-            .navigationTitle("Select an picture")
+            .navigationTitle("OCR")
         }
 
     }
@@ -92,9 +90,8 @@ struct PhotoPickerView: View {
         
         
     }
-    
 }
 
-//#Preview {
-//    PhotoPickerView()
-//}
+#Preview {
+    OCRPickerViewItem()
+}

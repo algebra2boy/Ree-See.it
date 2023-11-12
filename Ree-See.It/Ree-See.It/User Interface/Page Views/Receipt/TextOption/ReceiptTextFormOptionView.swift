@@ -203,13 +203,14 @@ struct ReceiptTextFormOptionView: View {
         
         
     }
-    
-    // a focus field to dismiss keyboard
-    enum FocusedField {
-        case name, address
-    }
-    
-    
-    #Preview {
-        ReceiptTextFormOptionView()
-    }
+}
+
+// a focus field to dismiss keyboard
+enum FocusedField {
+    case name, address
+}
+
+
+#Preview {
+    ReceiptTextFormOptionView()
+}
