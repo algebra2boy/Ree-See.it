@@ -13,6 +13,8 @@ struct ReceiptView: View {
     
     @State private var hasItemDeleted: Bool = false
     @State private var toBeDeleted: IndexSet?
+    @State private var isLogoPressed: Bool = false
+    @State private var searchText: String = ""
     
     @EnvironmentObject var authManager: AuthenticationManager
 
@@ -38,7 +40,12 @@ struct ReceiptView: View {
                     }
                 }
             }
-            
+            .searchable(text: $searchText, prompt: "Search for receipt") {
+                ForEach(receipts, id: \.id) { receipt in
+                    ReceiptCardView(receipt: receipt)
+                }
+            }
+
             .navigationTitle("Receipts")
             .alert("Do you want to delete this receipt on the cloud?", isPresented: $hasItemDeleted) {
                 Button("Cancel", role: .cancel) { }
@@ -78,12 +85,13 @@ struct ReceiptView: View {
     }
     
     func deleteReceipt(at offsets: IndexSet) {
-        
         self.hasItemDeleted = true
-        self.toBeDeleted = offsets
-        
+        if let offsets = offsets {
+            receipts.remove(atOffsets: offsets)
+        }
     }
 }
+
 
 
 #Preview {
